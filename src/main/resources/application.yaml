@@ -14,7 +14,7 @@ spring:
       ddl-auto: validate
   flyway:
     enabled: true
-    location: classpath:db/migration
+    locations: classpath:db/migration
   servlet:
     multipart:
       max-file-size: 10MB
