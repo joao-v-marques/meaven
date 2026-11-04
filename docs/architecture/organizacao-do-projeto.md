@@ -24,7 +24,7 @@ O que pode ficar em português:
 | ❌ Errado | ✅ Certo |
 |---|---|
 | `produto/ProdutoController.java` | `product/ProductController.java` |
-| `buscarPorId(Long id)` | `findById(Long id)` |
+| `buscarPorId(Integer id)` | `findById(Integer id)` |
 | `List<Produto> listaProdutos` | `List<Product> products` |
 | `boolean ativo` | `boolean active` |
 | tabela `usuarios`, coluna `data_criacao` | tabela `users`, coluna `created_at` |
@@ -175,11 +175,11 @@ Na página de edição, o JS lê o `id` da própria URL (`window.location.pathna
 | Arquivo | Responsabilidade | Exemplo |
 |---|---|---|
 | `Product` | Entidade JPA que representa a tabela | `@Entity @Table(name = "products")` |
-| `ProductRepository` | Consultas no banco | `extends JpaRepository<Product, Long>` |
+| `ProductRepository` | Consultas no banco | `extends JpaRepository<Product, Integer>` |
 | `ProductService` | Regras de negócio e validações | `create`, `update`, `findById` |
 | `ProductController` | API REST: recebe a requisição, chama o service e devolve JSON | `@RestController @RequestMapping("/api/products")` |
 | `dto/ProductRequest` | Dados que chegam na API, com validações | `@NotBlank String name` |
-| `dto/ProductResponse` | Dados que a API devolve | `record ProductResponse(Long id, String name)` |
+| `dto/ProductResponse` | Dados que a API devolve | `record ProductResponse(Integer id, String name)` |
 | `templates/product/list.html` | Estrutura HTML da página, sem Thymeleaf | `<table id="products-table">` |
 | `static/css/product/list.css` | Estilo só dessa página | `.products-table { ... }` |
 | `static/js/product/list.js` | Chama a API e preenche a página | `fetch("/meaven/api/products")` |
@@ -213,7 +213,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String name;
 
@@ -225,7 +225,7 @@ public class Product {
 
 ```java
 // product/ProductRepository.java
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findByActiveTrue();
 }
@@ -266,7 +266,7 @@ public record ProductRequest(
 
 ```java
 // product/dto/ProductResponse.java
-public record ProductResponse(Long id, String name, BigDecimal price) {
+public record ProductResponse(Integer id, String name, BigDecimal price) {
 
     public static ProductResponse from(Product product) {
         return new ProductResponse(product.getId(), product.getName(), product.getPrice());
@@ -299,11 +299,12 @@ public class ProductController {
 ```sql
 -- db/migration/V2__create_products_table.sql
 CREATE TABLE products (
-    id         BIGSERIAL PRIMARY KEY,
+    id         INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name       VARCHAR(150)   NOT NULL,
     price      NUMERIC(10, 2) NOT NULL,
     active     BOOLEAN        NOT NULL DEFAULT TRUE,
-    created_at TIMESTAMP      NOT NULL DEFAULT NOW()
+    created_at TIMESTAMP      NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP      NOT NULL DEFAULT NOW()
 );
 ```
 
