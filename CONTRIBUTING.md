@@ -6,6 +6,8 @@ Ninguém envia código direto para a `main`. Toda alteração é feita em uma br
 
 #### APÓS CLONAR E CONFIGURAR O PROJETO
 
+Ainda não configurou? Siga o guia [Como preparar o ambiente de desenvolvimento](docs/desenvolvimento/ambiente-local.md).
+
 ### 1. Atualize a `main`
 
 ```bash
