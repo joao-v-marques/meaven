@@ -91,6 +91,9 @@ Detalhes e exemplos estão em [Arquitetura e organização do projeto](docs/arch
 |---|---|
 | 💻 [Como preparar o ambiente de desenvolvimento](docs/development/ambiente-local.md) | Clonar, subir o banco e rodar o projeto |
 | 🏛️ [Arquitetura e organização do projeto](docs/architecture/organizacao-do-projeto.md) | Pacotes, pastas, padrões de nomes e regras do Thymeleaf |
+| ☕ [Back-end](docs/development/backend.md) | Camadas, injeção de dependência, DTOs, API REST e tratamento de erros |
+| 🎨 [Front-end](docs/development/frontend.md) | Páginas, Thymeleaf, padrões de HTML, CSS e JavaScript |
+| 🗄️ [Banco de dados](docs/development/banco-de-dados.md) | Migrations do Flyway, padrões de nomes e tipos de dados |
 | 🤝 [Como contribuir](CONTRIBUTING.md) | Branches, commits, Pull Requests e conflitos |
 
 ## 🤝 Como contribuir
