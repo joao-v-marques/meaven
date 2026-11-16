@@ -1,0 +1,419 @@
+/* ========================================
+   MEAVEN - SIMULAÇÃO FAZER UMA VIAGEM
+   Estilos exclusivos desta página
+======================================== */
+
+.viagem-container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 28px 34px 48px;
+    color: var(--texto);
+}
+
+.viagem-voltar {
+    display: inline-block;
+    margin-bottom: 22px;
+    color: var(--roxo);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.viagem-voltar:hover {
+    text-decoration: underline;
+}
+
+.viagem-intro {
+    margin-bottom: 28px;
+}
+
+.viagem-etiqueta {
+    display: inline-block;
+    color: var(--roxo);
+    background: var(--lilas);
+    border-radius: 20px;
+    padding: 6px 11px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .7px;
+}
+
+.viagem-intro h1 {
+    margin: 12px 0 8px;
+    font-size: clamp(26px, 4vw, 34px);
+    color: var(--texto);
+}
+
+.viagem-intro p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--cinza);
+    line-height: 1.6;
+}
+
+/* PROGRESSO */
+
+.viagem-progresso-area {
+    margin-bottom: 22px;
+    padding: 18px 20px;
+    background: var(--branco);
+    border: 1px solid var(--roxo-borda);
+    border-radius: 14px;
+}
+
+.viagem-progresso-texto {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.viagem-progresso-trilho {
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--lilas);
+}
+
+.viagem-progresso-trilho div {
+    width: 25%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--roxo);
+    transition: width .25s ease;
+}
+
+.viagem-etapas-indicadores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 13px;
+}
+
+.viagem-etapas-indicadores span {
+    color: var(--cinza);
+    font-size: 12px;
+    text-align: center;
+}
+
+.viagem-etapas-indicadores span.ativo {
+    color: var(--roxo);
+    font-weight: 700;
+}
+
+/* CARDS E CAMPOS */
+
+.viagem-card {
+    padding: 26px;
+    background: var(--branco);
+    border: 1px solid var(--roxo-borda);
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(40, 25, 70, .04);
+}
+
+.viagem-card-cabecalho {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.viagem-numero-etapa {
+    display: grid;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 12px;
+    color: var(--roxo);
+    background: var(--lilas);
+    font-weight: 800;
+}
+
+.viagem-card-cabecalho h2 {
+    margin: 1px 0 5px;
+    font-size: 20px;
+}
+
+.viagem-card-cabecalho p {
+    margin: 0;
+    color: var(--cinza);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.viagem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 19px;
+}
+
+.viagem-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.viagem-campo-largo {
+    grid-column: 1 / -1;
+}
+
+.viagem-campo input {
+    width: 100%;
+    min-height: 45px;
+    padding: 11px 13px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 9px;
+    outline: none;
+    background: #fff;
+    color: var(--texto);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.viagem-campo input:focus {
+    border-color: var(--roxo);
+    box-shadow: 0 0 0 3px rgba(105, 72, 160, .12);
+}
+
+.viagem-campo small {
+    color: var(--cinza);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.viagem-aviso {
+    margin: -5px 0 20px;
+    padding: 12px 14px;
+    border-radius: 9px;
+    background: var(--lilas);
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.viagem-total-parcial {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 22px;
+    padding: 16px;
+    border-radius: 10px;
+    background: var(--lilas);
+    font-size: 14px;
+}
+
+.viagem-total-parcial strong {
+    color: var(--roxo);
+    font-size: 19px;
+}
+
+/* BOTÕES E MENSAGENS */
+
+.viagem-acoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.viagem-btn {
+    min-height: 44px;
+    padding: 11px 21px;
+    border: 0;
+    border-radius: 9px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    transition: opacity .2s, transform .2s;
+}
+
+.viagem-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.viagem-btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.viagem-btn-principal {
+    color: #fff;
+    background: var(--roxo);
+}
+
+.viagem-btn-secundario {
+    color: var(--roxo);
+    background: var(--lilas);
+}
+
+.viagem-erro {
+    min-height: 0;
+    margin-top: 12px;
+    color: #b42318;
+    font-size: 13px;
+}
+
+.viagem-erro:not(:empty) {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #fff1f0;
+}
+
+/* RESULTADO */
+
+.viagem-resumo-topo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.viagem-indicador {
+    padding: 17px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 11px;
+    background: #fff;
+}
+
+.viagem-indicador span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--cinza);
+    font-size: 12px;
+}
+
+.viagem-indicador strong {
+    color: var(--roxo);
+    font-size: 21px;
+    overflow-wrap: anywhere;
+}
+
+.viagem-status {
+    margin-bottom: 18px;
+    padding: 15px 16px;
+    border-radius: 10px;
+    line-height: 1.55;
+    font-size: 14px;
+}
+
+.viagem-status strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.viagem-status.positivo {
+    background: #eaf7ef;
+    color: #17643a;
+}
+
+.viagem-status.atencao {
+    background: #fff5df;
+    color: #805500;
+}
+
+.viagem-status.negativo {
+    background: #fff0ef;
+    color: #a12a22;
+}
+
+.viagem-detalhes {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 18px;
+}
+
+.viagem-detalhes th,
+.viagem-detalhes td {
+    padding: 11px 4px;
+    border-bottom: 1px solid var(--roxo-borda);
+    text-align: left;
+    font-size: 13px;
+}
+
+.viagem-detalhes th {
+    color: var(--cinza);
+    font-weight: 500;
+}
+
+.viagem-detalhes td:last-child {
+    text-align: right;
+    font-weight: 700;
+}
+
+.viagem-orientacao {
+    margin: 0;
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.viagem-disclaimer {
+    margin: 17px 2px 0;
+    color: var(--cinza);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 760px) {
+    .viagem-container {
+        padding: 22px 16px 36px;
+    }
+
+    .viagem-card {
+        padding: 20px 16px;
+    }
+
+    .viagem-etapas-indicadores span {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 520px) {
+    .viagem-grid,
+    .viagem-resumo-topo {
+        grid-template-columns: 1fr;
+    }
+
+    .viagem-campo-largo {
+        grid-column: auto;
+    }
+
+    .viagem-card-cabecalho h2 {
+        font-size: 18px;
+    }
+
+    .viagem-etapas-indicadores {
+        gap: 3px;
+    }
+
+    .viagem-etapas-indicadores span {
+        font-size: 9px;
+    }
+
+    .viagem-total-parcial {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .viagem-acoes {
+        flex-direction: column-reverse;
+    }
+
+    .viagem-btn {
+        width: 100%;
+    }
+}

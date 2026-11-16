@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>MEAVEN | Abrir um Negócio</title>
+
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/abrir-negocio.css">
+    </head>
+    <body>
+
+        <div class="layout">
+
+            <!-- MENU LATERAL -->
+            <aside class="sidebar">
+                <div class="logo-area">
+                    <div class="logo">M</div>
+                    <p>Projeto Extracurricular</p>
+                </div>
+
+                <nav class="menu">
+                    <a href="/meaven/" class="menu-item">⌂ Início</a>
+                    <a href="/meaven/simulations" class="menu-item">
+                        ◎ Simulações
+                    </a>
+                    <a href="/meaven/concepts" class="menu-item">♙ Conceitos</a>
+                    <a href="/meaven/investments" class="menu-item">♧
+                        Investimentos</a>
+                </nav>
+            </aside>
+
+            <!-- CONTEUDO PRINCIPAL -->
+            <main class="main-content">
+
+                <header class="header">
+                    <div class="user-info">
+                        <div class="avatar-small" id="headerAvatar">U</div>
+                        <div>
+                            <strong id="headerName">Participante</strong>
+                            <span id="headerLevel">Iniciante</span>
+                        </div>
+                    </div>
+
+                    <div class="header-info">
+                        <span id="headerCapital">R$ 0,00</span>
+                        <span>Meu perfil</span>
+                    </div>
+                </header>
+
+                <section class="negocio-container">
+
+                    <a href="/meaven/simulations" class="negocio-voltar">
+                        ← Voltar para simulações
+                    </a>
+
+                    <!-- INTRODUCAO -->
+                    <div class="negocio-introducao">
+                        <span class="negocio-tag">EMPREENDEDORISMO E
+                            PLANEJAMENTO</span>
+
+                        <h1>Abra seu próprio negócio</h1>
+
+                        <p>
+                            Planeje os custos para começar, organize seu capital
+                            e descubra se sua ideia pode ser financeiramente
+                            viável.
+                        </p>
+                    </div>
+
+                    <!-- PROGRESSO -->
+                    <div class="negocio-progresso">
+                        <div class="negocio-progresso-topo">
+                            <span id="negocioEtapaTexto">Etapa 1 de 4</span>
+                            <span id="negocioPercentual">25%</span>
+                        </div>
+
+                        <div class="negocio-trilho">
+                            <div id="negocioProgressoBarra"></div>
+                        </div>
+
+                        <div class="negocio-indicadores">
+                            <span data-indicador>1. Ideia</span>
+                            <span data-indicador>2. Investimento</span>
+                            <span data-indicador>3. Financeiro</span>
+                            <span data-indicador>4. Resultado</span>
+                        </div>
+                    </div>
+
+                    <form id="formNegocio" novalidate>
+
+                        <!-- ETAPA 1: IDEIA -->
+                        <section class="negocio-etapa">
+
+                            <div class="negocio-etapa-titulo">
+                                <span class="negocio-numero">01</span>
+                                <div>
+                                    <h2>Conheça seu negócio</h2>
+                                    <p>Comece descrevendo a ideia que deseja
+                                        tirar do papel.</p>
+                                </div>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="nomeNegocio">Nome do negócio</label>
+                                <input
+                                    type="text"
+                                    id="nomeNegocio"
+                                    maxlength="100"
+                                    placeholder="Ex.: Minha cafeteria"
+                                    required>
+                            </div>
+
+                            <div class="negocio-grade-campos">
+
+                                <div class="negocio-campo">
+                                    <label
+                                        for="segmentoNegocio">Segmento</label>
+                                    <select id="segmentoNegocio" required>
+                                        <option value>Selecione</option>
+                                        <option
+                                            value="Alimentação">Alimentação</option>
+                                        <option
+                                            value="Comércio">Comércio</option>
+                                        <option
+                                            value="Tecnologia">Tecnologia</option>
+                                        <option value="Beleza e estética">Beleza
+                                            e estética</option>
+                                        <option
+                                            value="Serviços">Serviços</option>
+                                        <option
+                                            value="Educação">Educação</option>
+                                        <option value="Moda">Moda</option>
+                                        <option value="Outro">Outro</option>
+                                    </select>
+                                </div>
+
+                                <div class="negocio-campo">
+                                    <label for="tipoNegocio">Modelo de
+                                        atuação</label>
+                                    <select id="tipoNegocio" required>
+                                        <option value>Selecione</option>
+                                        <option value="Loja física">Loja
+                                            física</option>
+                                        <option value="Loja virtual">Loja
+                                            virtual</option>
+                                        <option
+                                            value="Prestação de serviços">Prestação
+                                            de serviços</option>
+                                        <option value="Negócio híbrido">Negócio
+                                            híbrido</option>
+                                        <option value="Atuação autônoma">Atuação
+                                            autônoma</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="descricaoNegocio">O que seu negócio
+                                    vai oferecer?</label>
+                                <textarea
+                                    id="descricaoNegocio"
+                                    rows="4"
+                                    maxlength="500"
+                                    placeholder="Descreva brevemente seus produtos ou serviços."></textarea>
+                                <small>Campo opcional. Use para registrar sua
+                                    ideia.</small>
+                            </div>
+
+                            <div class="negocio-dica">
+                                <strong>Planejar antes de começar faz
+                                    diferença.</strong>
+                                <p>
+                                    Conhecer seu público, seus produtos e a
+                                    forma de
+                                    atuação ajuda a identificar os recursos
+                                    necessários
+                                    para iniciar.
+                                </p>
+                            </div>
+
+                        </section>
+
+                        <!-- ETAPA 2: INVESTIMENTO INICIAL -->
+                        <section class="negocio-etapa" hidden>
+
+                            <div class="negocio-etapa-titulo">
+                                <span class="negocio-numero">02</span>
+                                <div>
+                                    <h2>Quanto custa começar?</h2>
+                                    <p>Informe os valores necessários para
+                                        colocar o negócio em funcionamento.</p>
+                                </div>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="equipamentos">Equipamentos e
+                                    ferramentas (R$)</label>
+                                <input
+                                    type="number"
+                                    id="equipamentos"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="Ex.: 5000"
+                                    value="0"
+                                    required>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="estrutura">Estrutura, reforma e
+                                    instalações (R$)</label>
+                                <input
+                                    type="number"
+                                    id="estrutura"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="Ex.: 3000"
+                                    value="0"
+                                    required>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="estoqueInicial">Estoque ou materiais
+                                    iniciais (R$)</label>
+                                <input
+                                    type="number"
+                                    id="estoqueInicial"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="Ex.: 2000"
+                                    value="0"
+                                    required>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="documentacao">Documentação e
+                                    regularização (R$)</label>
+                                <input
+                                    type="number"
+                                    id="documentacao"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="Ex.: 800"
+                                    value="0"
+                                    required>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="outrosInvestimentos">Outros custos
+                                    iniciais (R$)</label>
+                                <input
+                                    type="number"
+                                    id="outrosInvestimentos"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="Ex.: 500"
+                                    value="0"
+                                    required>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="mesesReserva">Reserva de capital de
+                                    giro (em meses)</label>
+                                <select id="mesesReserva" required>
+                                    <option value="1">1 mês</option>
+                                    <option value="2" selected>2 meses</option>
+                                    <option value="3">3 meses</option>
+                                    <option value="4">4 meses</option>
+                                    <option value="5">5 meses</option>
+                                    <option value="6">6 meses</option>
+                                </select>
+                                <small>
+                                    O capital de giro ajuda a manter o negócio
+                                    funcionando
+                                    enquanto as receitas ainda estão se
+                                    estabilizando.
+                                </small>
+                            </div>
+
+                            <div class="negocio-dica">
+                                <strong>Investimento inicial não é a mesma coisa
+                                    que capital de giro.</strong>
+                                <p>
+                                    O investimento inicial cobre a estrutura
+                                    para começar.
+                                    O capital de giro é uma reserva para ajudar
+                                    a pagar
+                                    os custos de funcionamento nos primeiros
+                                    meses.
+                                </p>
+                            </div>
+
+                        </section>
+
+                        <!-- ETAPA 3: PLANEJAMENTO FINANCEIRO -->
+                        <section class="negocio-etapa" hidden>
+
+                            <div class="negocio-etapa-titulo">
+                                <span class="negocio-numero">03</span>
+                                <div>
+                                    <h2>Planeje as finanças</h2>
+                                    <p>Faça uma previsão mensal de receitas e
+                                        despesas.</p>
+                                </div>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="capitalDisponivel">Quanto você tem
+                                    disponível para investir? (R$)</label>
+                                <input
+                                    type="number"
+                                    id="capitalDisponivel"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="Ex.: 15000"
+                                    required>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="faturamentoMensal">Faturamento
+                                    mensal esperado (R$)</label>
+                                <input
+                                    type="number"
+                                    id="faturamentoMensal"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="Ex.: 10000"
+                                    required>
+                                <small>
+                                    Informe quanto espera receber com vendas ou
+                                    serviços,
+                                    antes de descontar os custos.
+                                </small>
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="custosVariaveis">Custos variáveis
+                                    sobre o faturamento (%)</label>
+                                <input
+                                    type="number"
+                                    id="custosVariaveis"
+                                    min="0"
+                                    max="100"
+                                    step="0.01"
+                                    placeholder="Ex.: 30"
+                                    required>
+                                <small>
+                                    Custos que aumentam conforme as vendas, como
+                                    mercadorias,
+                                    matéria-prima e embalagens.
+                                </small>
+                            </div>
+
+                            <div class="negocio-grade-campos">
+
+                                <div class="negocio-campo">
+                                    <label for="custosFixos">Custos fixos
+                                        mensais (R$)</label>
+                                    <input
+                                        type="number"
+                                        id="custosFixos"
+                                        min="0"
+                                        step="0.01"
+                                        placeholder="Ex.: 2500"
+                                        required>
+                                    <small>Aluguel, internet, salários e outros
+                                        custos recorrentes.</small>
+                                </div>
+
+                                <div class="negocio-campo">
+                                    <label for="prolabore">Retirada mensal do
+                                        proprietário (R$)</label>
+                                    <input
+                                        type="number"
+                                        id="prolabore"
+                                        min="0"
+                                        step="0.01"
+                                        placeholder="Ex.: 1500"
+                                        value="0"
+                                        required>
+                                    <small>Valor que pretende retirar para uso
+                                        pessoal.</small>
+                                </div>
+
+                            </div>
+
+                            <div class="negocio-campo">
+                                <label for="impostosPercentual">Impostos e taxas
+                                    estimados sobre o faturamento (%)</label>
+                                <input
+                                    type="number"
+                                    id="impostosPercentual"
+                                    min="0"
+                                    max="100"
+                                    step="0.01"
+                                    placeholder="Ex.: 6"
+                                    value="0"
+                                    required>
+                                <small>
+                                    Informe uma estimativa própria. A tributação
+                                    real depende
+                                    da atividade, enquadramento e regras
+                                    aplicáveis.
+                                </small>
+                            </div>
+
+                            <div class="negocio-dica">
+                                <strong>Atenção ao faturamento.</strong>
+                                <p>
+                                    Faturamento é o dinheiro recebido pelas
+                                    vendas ou serviços.
+                                    Lucro é o que sobra depois de descontar os
+                                    custos e despesas.
+                                </p>
+                            </div>
+
+                        </section>
+
+                        <!-- ETAPA 4: RESULTADO -->
+                        <section class="negocio-etapa" hidden>
+
+                            <div class="negocio-etapa-titulo">
+                                <span class="negocio-numero">04</span>
+                                <div>
+                                    <h2>Análise do seu negócio</h2>
+                                    <p>Confira o investimento necessário e a
+                                        previsão financeira.</p>
+                                </div>
+                            </div>
+
+                            <div id="negocioResultado"></div>
+
+                            <div class="negocio-aviso-final">
+                                <strong>Importante</strong>
+                                <p>
+                                    Esta simulação é educativa e utiliza as
+                                    estimativas
+                                    informadas por você. Ela não garante o
+                                    sucesso do negócio
+                                    e não substitui um plano de negócios
+                                    completo, orientação
+                                    contábil ou análise de mercado.
+                                </p>
+                            </div>
+
+                        </section>
+
+                        <!-- ERROS -->
+                        <p id="negocioErro" class="negocio-erro"
+                            role="alert"></p>
+
+                        <!-- NAVEGACAO -->
+                        <div class="negocio-acoes">
+                            <button
+                                type="button"
+                                id="btnNegocioAnterior"
+                                class="negocio-btn negocio-btn-secundario"
+                                disabled>
+                                ← Voltar
+                            </button>
+
+                            <button
+                                type="button"
+                                id="btnNegocioProximo"
+                                class="negocio-btn negocio-btn-principal">
+                                Continuar →
+                            </button>
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </main>
+
+        </div>
+
+        <script src="../js/script.js"></script>
+        <script src="../js/abrir-negocio.js"></script>
+
+    </body>
+</html>

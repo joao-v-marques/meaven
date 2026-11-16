@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MEAVEN | Educação Financeira</title>
+
+    <link rel="stylesheet" href="/meaven/css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="logo-area">
+                <div class="logo">M</div>
+                <p>Projeto Extracurricular</p>
+            </div>
+
+            <nav class="menu">
+
+                <a href="/meaven/" class="menu-item active">
+                    ⌂ Início
+                </a>
+
+                <a href="/meaven/simulations" class="menu-item">
+                    ◎ Simulações
+                </a>
+
+                <a href="/meaven/concepts" class="menu-item">
+                    ♙ Conceitos
+                </a>
+
+                <a href="/meaven/investments" class="menu-item">
+                    ♧ Investimentos
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- CABEÇALHO -->
+            <header class="header">
+
+                <div class="user-info">
+
+                    <div class="avatar-small">G</div>
+
+                    <div>
+                        <strong>Guilherme S.</strong>
+                        <span>24 anos</span>
+                    </div>
+
+                </div>
+
+                <div class="header-info">
+
+                    <span>R$ 18.450,00</span>
+
+                    <span>Intermediário</span>
+
+                </div>
+
+            </header>
+
+            <!-- PERFIL FINANCEIRO -->
+            <section class="profile-card">
+
+                <div class="profile-top">
+
+                    <div class="avatar">G</div>
+
+                    <div class="field">
+
+                        <label for="nome">Nome do participante</label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            value="Guilherme S."
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="idade">Idade</label>
+
+                        <input
+                            type="number"
+                            id="idade"
+                            value="24"
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="field capital-field">
+
+                    <label for="capital">Capital inicial / Carteira atual</label>
+
+                    <input
+                        type="text"
+                        id="capital"
+                        value="R$ 18.450,00"
+                    >
+
+                </div>
+
+                <div class="knowledge">
+
+                    <label>Nível de Conhecimento Financeiro</label>
+
+                    <div class="knowledge-options">
+
+                        <label class="knowledge-option">
+
+                            <input
+                                type="radio"
+                                name="nivel"
+                                value="iniciante"
+                            >
+
+                            <strong>Iniciante</strong>
+
+                            <small>
+                                Aprendendo o básico e primeiros passos.
+                            </small>
+
+                        </label>
+
+                        <label class="knowledge-option">
+
+                            <input
+                                type="radio"
+                                name="nivel"
+                                value="intermediario"
+                                checked
+                            >
+
+                            <strong>Intermediário</strong>
+
+                            <small>
+                                Já poupo, controlo gastos e tenho reserva.
+                            </small>
+
+                        </label>
+
+                        <label class="knowledge-option">
+
+                            <input
+                                type="radio"
+                                name="nivel"
+                                value="avancado"
+                            >
+
+                            <strong>Avançado</strong>
+
+                            <small>
+                                Invisto e planejo meus gastos e investimentos.
+                            </small>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-actions">
+
+                    <button class="cancel-button" type="reset">
+                        Cancelar
+                    </button>
+
+                    <button class="save-button" id="saveProfile" type="button">
+                        Salvar Perfil
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- APRENDIZADO FINANCEIRO -->
+            <section class="learning-section">
+
+                <div class="learning-heading">
+
+                    <div>
+
+                        <h1>Aprendizado financeiro</h1>
+
+                        <p>
+                            Explore nossos conteúdos e dê o próximo passo
+                            rumo à sua independência financeira.
+                        </p>
+
+                    </div>
+
+                    <div class="piggy-placeholder">
+                        🐷
+                    </div>
+
+                </div>
+
+                <!-- CARDS -->
+                <div class="cards">
+
+                    <a href="/meaven/simulations" class="learning-card">
+
+                        <span>🧮</span>
+
+                        <strong>Simule suas decisões</strong>
+
+                    </a>
+
+                    <a href="/meaven/concepts" class="learning-card">
+
+                        <span>🎓</span>
+
+                        <strong>Aprenda conceitos</strong>
+
+                    </a>
+
+                    <a href="/meaven/investments" class="learning-card">
+
+                        <span>📈</span>
+
+                        <strong>Tipos de investimentos</strong>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="/meaven/js/script.js"></script>
+
+</body>
+</html>

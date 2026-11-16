@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MEAVEN | Quitar uma Dívida</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quitar-divida.css">
+</head>
+<body>
+
+    <div class="layout">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo">M</div>
+                <p>Projeto Extracurricular</p>
+            </div>
+
+            <nav class="menu">
+                <a href="/meaven/" class="menu-item">⌂ Início</a>
+                <a href="/meaven/simulations" class="menu-item active">◎ Simulações</a>
+                <a href="/meaven/concepts" class="menu-item">♙ Conceitos</a>
+                <a href="/meaven/investments" class="menu-item">♧ Investimentos</a>
+            </nav>
+        </aside>
+
+        <!-- CONTEUDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- CABECALHO -->
+            <header class="header">
+                <div class="user-info">
+                    <div class="avatar-small" id="headerAvatar">U</div>
+                    <div>
+                        <strong id="headerName">Participante</strong>
+                        <span id="headerLevel">Iniciante</span>
+                    </div>
+                </div>
+
+                <div class="header-info">
+                    <span id="headerCapital">R$ 0,00</span>
+                    <span>Meu perfil</span>
+                </div>
+            </header>
+
+            <!-- SIMULACAO -->
+            <section class="divida-container">
+
+                <a href="/meaven/simulations" class="divida-voltar">
+                    ← Voltar para simulações
+                </a>
+
+                <div class="divida-introducao">
+                    <span class="divida-tag">PLANEJAMENTO FINANCEIRO</span>
+
+                    <h1>Quitar uma dívida</h1>
+
+                    <p>
+                        Descubra como organizar seus pagamentos, reduzir os
+                        juros e encontrar um caminho para sair das dívidas.
+                    </p>
+                </div>
+
+                <!-- PROGRESSO -->
+                <div class="divida-progresso">
+                    <div class="divida-progresso-topo">
+                        <span id="dividaEtapaTexto">Etapa 1 de 4</span>
+                        <span id="dividaPercentual">25%</span>
+                    </div>
+
+                    <div class="divida-trilho">
+                        <div id="dividaProgressoBarra"></div>
+                    </div>
+
+                    <div class="divida-indicadores">
+                        <span data-indicador>1. Dívida</span>
+                        <span data-indicador>2. Orçamento</span>
+                        <span data-indicador>3. Plano</span>
+                        <span data-indicador>4. Resultado</span>
+                    </div>
+                </div>
+
+                <form id="formDivida" novalidate>
+
+                    <!-- ETAPA 1 -->
+                    <section class="divida-etapa">
+
+                        <div class="divida-etapa-titulo">
+                            <span class="divida-numero">01</span>
+                            <div>
+                                <h2>Conheça sua dívida</h2>
+                                <p>Informe os dados da dívida que deseja quitar.</p>
+                            </div>
+                        </div>
+
+                        <div class="divida-campo">
+                            <label for="nomeCredor">Nome do credor ou instituição</label>
+                            <input
+                                type="text"
+                                id="nomeCredor"
+                                placeholder="Ex.: Banco, loja ou cartão"
+                                maxlength="100"
+                                required
+                            >
+                        </div>
+
+                        <div class="divida-campo">
+                            <label for="tipoDivida">Tipo de dívida</label>
+                            <select id="tipoDivida" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="Cartão de crédito">Cartão de crédito</option>
+                                <option value="Empréstimo">Empréstimo</option>
+                                <option value="Financiamento">Financiamento</option>
+                                <option value="Cheque especial">Cheque especial</option>
+                                <option value="Conta atrasada">Conta atrasada</option>
+                                <option value="Outra">Outra</option>
+                            </select>
+                        </div>
+
+                        <div class="divida-grade-campos">
+
+                            <div class="divida-campo">
+                                <label for="saldoDevedor">Valor atual da dívida (R$)</label>
+                                <input
+                                    type="number"
+                                    id="saldoDevedor"
+                                    min="0.01"
+                                    step="0.01"
+                                    placeholder="Ex.: 2500"
+                                    required
+                                >
+                            </div>
+
+                            <div class="divida-campo">
+                                <label for="jurosMensais">Juros mensais (%)</label>
+                                <input
+                                    type="number"
+                                    id="jurosMensais"
+                                    min="0"
+                                    max="100"
+                                    step="0.01"
+                                    placeholder="Ex.: 3,5"
+                                    required
+                                >
+                                <small>Consulte a taxa no contrato ou com o credor.</small>
+                            </div>
+
+                        </div>
+
+                        <div class="divida-campo">
+                            <label for="pagamentoMinimo">Pagamento mínimo mensal (R$)</label>
+                            <input
+                                type="number"
+                                id="pagamentoMinimo"
+                                min="0.01"
+                                step="0.01"
+                                placeholder="Ex.: 250"
+                                required
+                            >
+                            <small>Informe quanto você precisa pagar por mês para manter o acordo atual.</small>
+                        </div>
+
+                    </section>
+
+                    <!-- ETAPA 2 -->
+                    <section class="divida-etapa" hidden>
+
+                        <div class="divida-etapa-titulo">
+                            <span class="divida-numero">02</span>
+                            <div>
+                                <h2>Analise seu orçamento</h2>
+                                <p>Vamos descobrir quanto sobra no seu mês.</p>
+                            </div>
+                        </div>
+
+                        <div class="divida-campo">
+                            <label for="rendaMensal">Sua renda mensal (R$)</label>
+                            <input
+                                type="number"
+                                id="rendaMensal"
+                                min="0"
+                                step="0.01"
+                                placeholder="Ex.: 3000"
+                                required
+                            >
+                        </div>
+
+                        <div class="divida-campo">
+                            <label for="despesasMensais">Despesas mensais (R$)</label>
+                            <input
+                                type="number"
+                                id="despesasMensais"
+                                min="0"
+                                step="0.01"
+                                placeholder="Ex.: 1800"
+                                required
+                            >
+                            <small>Inclua moradia, alimentação, transporte e outras despesas essenciais.</small>
+                        </div>
+
+                        <div class="divida-campo">
+                            <label for="outrasDividas">Parcelas de outras dívidas (R$)</label>
+                            <input
+                                type="number"
+                                id="outrasDividas"
+                                min="0"
+                                step="0.01"
+                                placeholder="Ex.: 300"
+                                value="0"
+                                required
+                            >
+                        </div>
+
+                        <div class="divida-dica">
+                            <strong>Por que precisamos desses dados?</strong>
+                            <p>
+                                Para evitar sugerir um pagamento que comprometa
+                                o dinheiro necessário para suas despesas.
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <!-- ETAPA 3 -->
+                    <section class="divida-etapa" hidden>
+
+                        <div class="divida-etapa-titulo">
+                            <span class="divida-numero">03</span>
+                            <div>
+                                <h2>Monte seu plano de quitação</h2>
+                                <p>Defina quanto consegue pagar além do mínimo.</p>
+                            </div>
+                        </div>
+
+                        <div class="divida-resumo">
+                            <span>Pagamento mínimo informado</span>
+                            <strong id="resumoPagamentoMinimo">R$ 0,00</strong>
+                        </div>
+
+                        <div class="divida-campo">
+                            <label for="valorAdicional">Quanto consegue pagar a mais por mês? (R$)</label>
+                            <input
+                                type="number"
+                                id="valorAdicional"
+                                min="0"
+                                step="0.01"
+                                placeholder="Ex.: 100"
+                                value="0"
+                                required
+                            >
+                            <small>
+                                Esse valor será somado ao pagamento mínimo
+                                para simular uma quitação mais rápida.
+                            </small>
+                        </div>
+
+                        <div class="divida-resumo divida-resumo-destaque">
+                            <span>Total que pretende pagar por mês</span>
+                            <strong id="resumoPagamentoTotal">R$ 0,00</strong>
+                        </div>
+
+                        <div class="divida-dica">
+                            <strong>Uma escolha consciente</strong>
+                            <p>
+                                Não precisa comprometer todo o dinheiro que sobra.
+                                Mantenha uma margem para imprevistos e necessidades
+                                do dia a dia.
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <!-- ETAPA 4 -->
+                    <section class="divida-etapa" hidden>
+
+                        <div class="divida-etapa-titulo">
+                            <span class="divida-numero">04</span>
+                            <div>
+                                <h2>Seu plano de quitação</h2>
+                                <p>Compare os cenários e veja o impacto das suas escolhas.</p>
+                            </div>
+                        </div>
+
+                        <div id="dividaResultado"></div>
+
+                        <div class="divida-aviso-final">
+                            <strong>Importante</strong>
+                            <p>
+                                Esta é uma estimativa educativa. O cálculo não
+                                considera multas, novos encargos, mudanças de taxa,
+                                renegociações ou condições especiais oferecidas
+                                pelo credor. Confirme os valores e as condições
+                                diretamente com a instituição.
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <!-- MENSAGEM DE ERRO -->
+                    <p id="dividaErro" class="divida-erro" role="alert"></p>
+
+                    <!-- BOTOES -->
+                    <div class="divida-acoes">
+                        <button
+                            type="button"
+                            id="btnDividaAnterior"
+                            class="divida-btn divida-btn-secundario"
+                            disabled
+                        >
+                            ← Voltar
+                        </button>
+
+                        <button
+                            type="button"
+                            id="btnDividaProximo"
+                            class="divida-btn divida-btn-principal"
+                        >
+                            Continuar →
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/quitar-divida.js"></script>
+
+</body>
+</html>
