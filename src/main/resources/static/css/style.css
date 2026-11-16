@@ -1,0 +1,897 @@
+
+/* ========================================
+   MEAVEN - IDENTIDADE VISUAL
+======================================== */
+
+:root {
+    --roxo: #643DA8;
+    --roxo-borda: #594779;
+    --lilas: #8875A2;
+    --fundo: #FCF7FB;
+    --branco: #FFFFFF;
+    --texto: #2D1B3B;
+    --rosa: #F28EB7;
+    --amarelo: #F6C744;
+    --cinza: #77717E;
+}
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+/* ========================================
+   ESTRUTURA PRINCIPAL
+======================================== */
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ========================================
+   MENU LATERAL
+======================================== */
+
+.sidebar {
+    width: 205px;
+    min-width: 205px;
+    background: var(--branco);
+    border-right: 1px solid #D7C6E8;
+    padding: 25px 15px;
+}
+
+.logo-area {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo {
+    width: 65px;
+    height: 65px;
+    margin: auto;
+    background: var(--roxo);
+    color: var(--branco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo-area p {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--texto);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 25px;
+    text-decoration: none;
+    color: var(--texto);
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.menu-item span {
+    font-size: 16px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: #E9DDF6;
+    color: var(--roxo);
+    font-weight: bold;
+}
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 25px 35px;
+}
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-small {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--roxo);
+    color: var(--roxo);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.user-details strong {
+    font-size: 13px;
+}
+
+.user-details span {
+    font-size: 11px;
+    color: var(--cinza);
+}
+
+.header-info {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.header-info span {
+    padding: 9px 14px;
+    background: var(--branco);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #00000008;
+}
+
+/* ========================================
+   CARTÃO DE PERFIL
+======================================== */
+
+.profile-card {
+    background: var(--branco);
+    border: 1px solid var(--roxo-borda);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 3px 12px #643DA810;
+}
+
+.profile-top {
+    display: grid;
+    grid-template-columns: 55px 1fr 1fr;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.avatar {
+    width: 55px;
+    height: 55px;
+    border: 2px solid var(--roxo);
+    color: var(--roxo);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field label,
+.knowledge-title {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.field input {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 10px;
+    outline: none;
+    color: var(--texto);
+    background: #FFFCFF;
+}
+
+.field input:focus {
+    border-color: var(--roxo);
+    box-shadow: 0 0 0 2px #643DA820;
+}
+
+.field input::placeholder {
+    color: #A69BAC;
+    font-size: 12px;
+}
+
+.capital-field {
+    margin-bottom: 22px;
+}
+
+/* ========================================
+   NÍVEL DE CONHECIMENTO
+======================================== */
+
+.knowledge {
+    border-top: 1px solid #EEE8F1;
+    padding-top: 18px;
+}
+
+.knowledge-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.knowledge-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 17px;
+    border: 1px solid #E9E1EF;
+    border-radius: 12px;
+    background: #FCF9FD;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.knowledge-option:hover {
+    border-color: var(--roxo);
+}
+
+.knowledge-option:has(input:checked) {
+    border: 2px solid var(--roxo);
+    background: #F3ECFA;
+}
+
+.knowledge-option input {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    accent-color: var(--roxo);
+}
+
+.option-icon {
+    color: var(--roxo);
+    font-size: 18px;
+}
+
+.knowledge-option strong {
+    font-size: 13px;
+}
+
+.knowledge-option small {
+    color: var(--cinza);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* ========================================
+   BOTÕES DO PERFIL
+======================================== */
+
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.profile-actions button {
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 11px 23px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.cancel-button {
+    background: transparent;
+    color: var(--texto);
+}
+
+.cancel-button:hover {
+    background: #F2EDF5;
+}
+
+.save-button {
+    background: var(--roxo);
+    color: var(--branco);
+}
+
+.save-button:hover {
+    background: #4F2E8D;
+}
+
+/* ========================================
+   APRENDIZADO FINANCEIRO
+======================================== */
+
+.learning-section {
+    margin-top: 40px;
+}
+
+.learning-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.learning-heading h1 {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.learning-heading p {
+    max-width: 430px;
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.piggy-placeholder {
+    font-size: 75px;
+}
+
+/* ========================================
+   CARDS DA TELA INICIAL
+======================================== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.learning-card {
+    min-height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px;
+    border: 1px solid var(--roxo);
+    border-radius: 12px;
+    background: var(--branco);
+    text-decoration: none;
+    color: var(--texto);
+    transition: 0.2s;
+}
+
+.learning-card:hover {
+    background: #F3ECFA;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px #643DA815;
+}
+
+.card-icon {
+    font-size: 30px;
+}
+
+.learning-card strong {
+    font-size: 12px;
+    text-align: center;
+}
+
+/* ========================================
+   TELA DE SIMULAÇÕES
+======================================== */
+
+.simulations-container {
+    width: 100%;
+    padding: 15px 0 30px;
+}
+
+.page-heading {
+    margin-bottom: 30px;
+}
+
+.page-heading h1 {
+    font-size: 27px;
+    color: var(--texto);
+    margin-bottom: 10px;
+}
+
+.page-heading p {
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.simulations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.simulation-card {
+    min-height: 175px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 22px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 12px;
+    background: var(--branco);
+    text-decoration: none;
+    color: var(--texto);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.simulation-card:hover {
+    background: #F3ECFA;
+    border-color: var(--roxo);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px #643DA815;
+}
+
+.simulation-icon {
+    font-size: 42px;
+}
+
+.simulation-card h3 {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* ========================================
+   TELA - COMPRAR CASA
+======================================== */
+
+.navegacao-simulacao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.voltar {
+    color: var(--roxo);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.voltar:hover {
+    text-decoration: underline;
+}
+
+.nome-simulacao {
+    color: var(--cinza);
+}
+
+.progresso {
+    margin-bottom: 25px;
+}
+
+.progresso p {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.progresso-barra {
+    height: 9px;
+    background: #E9E1EF;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progresso-barra span {
+    display: block;
+    width: 25%;
+    height: 100%;
+    background: var(--roxo);
+    border-radius: 20px;
+}
+
+.introducao {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.introducao-icone {
+    width: 65px;
+    height: 65px;
+    min-width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F3ECFA;
+    border-radius: 15px;
+    font-size: 35px;
+}
+
+.introducao h1 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.introducao p {
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.area-simulacao {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 22px;
+    align-items: start;
+}
+
+.opcoes-casa,
+.resumo-financeiro {
+    min-width: 0;
+    background: var(--branco);
+    border: 1px solid #E4D9EB;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 3px 12px #643DA810;
+}
+
+.opcoes-casa h2,
+.resumo-financeiro h2 {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.card-casa {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid #E9E1EF;
+    border-radius: 12px;
+    background: #FCF9FD;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card-casa:hover {
+    border-color: var(--roxo);
+    background: #F3ECFA;
+    transform: translateY(-2px);
+}
+
+.card-casa.selecionado {
+    border: 2px solid var(--roxo);
+    background: #F3ECFA;
+}
+
+.icone-casa {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E9DDF6;
+    border-radius: 10px;
+    font-size: 26px;
+}
+
+.card-casa h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.card-casa p {
+    color: var(--cinza);
+    font-size: 12px;
+}
+
+.pergunta-complementar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    margin-top: 20px;
+    background: #FFF9E9;
+    border-radius: 10px;
+}
+
+.pergunta-icone {
+    font-size: 23px;
+}
+
+.pergunta-texto {
+    color: var(--texto);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.valor-selecionado {
+    padding: 18px;
+    background: #F3ECFA;
+    border-radius: 12px;
+    margin-bottom: 22px;
+}
+
+.valor-selecionado p {
+    color: var(--cinza);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.valor-selecionado strong {
+    color: var(--roxo);
+    font-size: 23px;
+}
+
+.informacoes-financeiras {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.linha-informacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.linha-informacao strong {
+    font-size: 13px;
+    text-align: right;
+}
+
+.barra-entrada {
+    height: 9px;
+    background: #E9E1EF;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.barra-entrada span {
+    display: block;
+    width: 20%;
+    height: 100%;
+    background: var(--roxo);
+}
+
+.dica-financeira {
+    margin-top: 25px;
+    padding: 14px;
+    background: #FCF9FD;
+    border-left: 3px solid var(--roxo);
+    border-radius: 8px;
+}
+
+.dica-financeira p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--cinza);
+}
+
+.dica-financeira strong {
+    color: var(--roxo);
+}
+
+.acoes {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.acoes button {
+    padding: 13px 28px;
+    border: none;
+    border-radius: 25px;
+    background: var(--roxo);
+    color: var(--branco);
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.acoes button:hover {
+    background: #4F2E8D;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        width: 170px;
+        min-width: 170px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .profile-top {
+        grid-template-columns: 50px 1fr 1fr;
+    }
+
+    .knowledge-options {
+        gap: 8px;
+    }
+
+    .knowledge-option {
+        padding: 12px;
+    }
+
+    .simulations-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .area-simulacao {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        padding: 15px;
+        border-right: none;
+        border-bottom: 1px solid #D7C6E8;
+    }
+
+    .logo-area {
+        margin-bottom: 15px;
+    }
+
+    .logo {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .menu {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .menu-item {
+        white-space: nowrap;
+        font-size: 11px;
+    }
+
+    .main-content {
+        padding: 18px 14px;
+    }
+
+    .header {
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
+    }
+
+    .header-info {
+        flex-wrap: wrap;
+    }
+
+    .profile-card {
+        padding: 17px;
+    }
+
+    .profile-top {
+        grid-template-columns: 1fr;
+    }
+
+    .avatar {
+        margin-bottom: 5px;
+    }
+
+    .knowledge-options {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-heading {
+        align-items: flex-start;
+    }
+
+    .learning-heading h1 {
+        font-size: 22px;
+    }
+
+    .piggy-placeholder {
+        font-size: 45px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .simulations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-heading h1 {
+        font-size: 22px;
+    }
+
+    .introducao {
+        align-items: flex-start;
+    }
+
+    .introducao h1 {
+        font-size: 20px;
+    }
+
+    .opcoes-casa,
+    .resumo-financeiro {
+        padding: 16px;
+    }
+
+    .valor-selecionado strong {
+        font-size: 20px;
+    }
+
+    .acoes button {
+        width: 100%;
+    }
+
+}

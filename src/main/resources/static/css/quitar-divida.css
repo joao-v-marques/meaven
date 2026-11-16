@@ -1,0 +1,514 @@
+
+/* ========================================
+   MEAVEN - QUITAR UMA DIVIDA
+======================================== */
+
+.divida-container {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 28px 32px 50px;
+}
+
+.divida-voltar {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: var(--roxo);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.divida-voltar:hover {
+    text-decoration: underline;
+}
+
+/* INTRODUCAO */
+
+.divida-introducao {
+    margin-bottom: 30px;
+}
+
+.divida-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: var(--lilas);
+    color: var(--roxo);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+}
+
+.divida-introducao h1 {
+    margin: 0 0 10px;
+    color: var(--texto);
+    font-size: 30px;
+}
+
+.divida-introducao p {
+    max-width: 650px;
+    margin: 0;
+    color: var(--cinza);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* PROGRESSO */
+
+.divida-progresso {
+    margin-bottom: 30px;
+    padding: 22px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 14px;
+    background: var(--branco);
+}
+
+.divida-progresso-topo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.divida-trilho {
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--fundo);
+}
+
+#dividaProgressoBarra {
+    width: 25%;
+    height: 100%;
+    border-radius: 20px;
+    background: var(--roxo);
+    transition: width 0.3s ease;
+}
+
+.divida-indicadores {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.divida-indicadores span {
+    color: var(--cinza);
+    font-size: 12px;
+}
+
+.divida-indicadores span.ativo {
+    color: var(--roxo);
+    font-weight: 700;
+}
+
+/* ETAPAS */
+
+.divida-etapa {
+    padding: 28px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 14px;
+    background: var(--branco);
+}
+
+.divida-etapa[hidden] {
+    display: none !important;
+}
+
+.divida-etapa-titulo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.divida-numero {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--lilas);
+    color: var(--roxo);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.divida-etapa-titulo h2 {
+    margin: 0 0 5px;
+    color: var(--texto);
+    font-size: 21px;
+}
+
+.divida-etapa-titulo p {
+    margin: 0;
+    color: var(--cinza);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* CAMPOS */
+
+.divida-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.divida-campo label {
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.divida-campo input,
+.divida-campo select {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 13px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 9px;
+    outline: none;
+    background: var(--branco);
+    color: var(--texto);
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.divida-campo input:focus,
+.divida-campo select:focus {
+    border-color: var(--roxo);
+    box-shadow: 0 0 0 3px rgba(105, 72, 170, 0.12);
+}
+
+.divida-campo small {
+    color: var(--cinza);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.divida-grade-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* DICAS E RESUMOS */
+
+.divida-dica {
+    margin-top: 25px;
+    padding: 18px;
+    border-left: 4px solid var(--roxo);
+    border-radius: 8px;
+    background: var(--fundo);
+}
+
+.divida-dica strong {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.divida-dica p {
+    margin: 0;
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.divida-resumo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 18px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 10px;
+    background: var(--fundo);
+}
+
+.divida-resumo span {
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.divida-resumo strong {
+    color: var(--roxo);
+    font-size: 19px;
+}
+
+.divida-resumo-destaque {
+    border-color: var(--roxo);
+    background: var(--lilas);
+}
+
+/* RESULTADO */
+
+.divida-resultados-grade {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.divida-card-resultado {
+    padding: 20px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 12px;
+    background: var(--branco);
+}
+
+.divida-card-resultado.destaque {
+    border-color: var(--roxo);
+    background: var(--lilas);
+}
+
+.divida-card-resultado span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--cinza);
+    font-size: 13px;
+}
+
+.divida-card-resultado strong {
+    display: block;
+    color: var(--texto);
+    font-size: 22px;
+}
+
+.divida-card-resultado small {
+    display: block;
+    margin-top: 7px;
+    color: var(--cinza);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.divida-comparacao {
+    margin: 24px 0;
+}
+
+.divida-comparacao h3,
+.divida-detalhamento h3 {
+    margin: 0 0 15px;
+    color: var(--texto);
+    font-size: 17px;
+}
+
+.divida-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.divida-tabela th,
+.divida-tabela td {
+    padding: 13px 12px;
+    border-bottom: 1px solid var(--roxo-borda);
+    text-align: left;
+}
+
+.divida-tabela th {
+    color: var(--cinza);
+    font-weight: 600;
+}
+
+.divida-tabela td {
+    color: var(--texto);
+}
+
+.divida-economia {
+    margin: 20px 0;
+    padding: 18px;
+    border-radius: 10px;
+    background: var(--lilas);
+}
+
+.divida-economia strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--roxo);
+    font-size: 18px;
+}
+
+.divida-economia p {
+    margin: 0;
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.divida-status {
+    margin: 20px 0;
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.divida-status strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.divida-status.positivo {
+    border: 1px solid #a9d8b5;
+    background: #edf8f0;
+    color: #245c35;
+}
+
+.divida-status.atencao {
+    border: 1px solid #e8d49c;
+    background: #fff8e8;
+    color: #795b18;
+}
+
+.divida-status.negativo {
+    border: 1px solid #e5b3b3;
+    background: #fff0f0;
+    color: #8b3030;
+}
+
+.divida-detalhamento {
+    margin-top: 25px;
+}
+
+.divida-orientacao {
+    margin-top: 18px;
+    color: var(--cinza);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.divida-aviso-final {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 9px;
+    background: var(--fundo);
+}
+
+.divida-aviso-final strong {
+    color: var(--texto);
+    font-size: 13px;
+}
+
+.divida-aviso-final p {
+    margin: 7px 0 0;
+    color: var(--cinza);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* BOTOES E ERROS */
+
+.divida-erro {
+    min-height: 20px;
+    margin: 15px 0 0;
+    color: #b42318;
+    font-size: 13px;
+}
+
+.divida-acoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.divida-btn {
+    min-height: 45px;
+    padding: 11px 22px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.divida-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.divida-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.divida-btn-principal {
+    background: var(--roxo);
+    color: #ffffff;
+}
+
+.divida-btn-secundario {
+    border: 1px solid var(--roxo-borda);
+    background: var(--branco);
+    color: var(--texto);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+    .divida-container {
+        padding: 20px 15px 35px;
+    }
+
+    .divida-introducao h1 {
+        font-size: 25px;
+    }
+
+    .divida-etapa {
+        padding: 20px 16px;
+    }
+
+    .divida-grade-campos {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .divida-indicadores {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px 18px;
+    }
+
+    .divida-resultados-grade {
+        grid-template-columns: 1fr;
+    }
+
+    .divida-resumo {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .divida-tabela {
+        font-size: 12px;
+    }
+
+    .divida-tabela th,
+    .divida-tabela td {
+        padding: 10px 7px;
+    }
+
+    .divida-acoes {
+        flex-direction: column-reverse;
+    }
+
+    .divida-btn {
+        width: 100%;
+    }
+}

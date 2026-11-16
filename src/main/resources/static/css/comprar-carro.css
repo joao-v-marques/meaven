@@ -1,0 +1,355 @@
+
+/* =========================================
+   MEAVEN - SIMULAÇÃO COMPRAR CARRO
+========================================= */
+
+.carro-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.carro-back-link {
+    display: inline-block;
+    color: var(--roxo);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.carro-intro {
+    margin-bottom: 30px;
+}
+
+.carro-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--roxo);
+}
+
+.carro-intro h1 {
+    font-size: 29px;
+    margin: 10px 0;
+    color: var(--texto);
+}
+
+.carro-intro p {
+    color: var(--cinza);
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.carro-panel {
+    display: block;
+    width: 100%;
+    min-height: auto;
+    box-sizing: border-box;
+    background: var(--branco);
+    border: 1px solid var(--roxo-borda);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+
+/* PROGRESSO */
+
+.carro-progress-area {
+    margin-bottom: 35px;
+}
+
+.carro-progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--cinza);
+}
+
+.carro-progress-track {
+    height: 8px;
+    border-radius: 20px;
+    background: var(--fundo);
+    overflow: hidden;
+}
+
+#carroProgressBar {
+    width: 25%;
+    height: 100%;
+    background: var(--roxo);
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+/* ETAPAS */
+
+.carro-step {
+    display: none;
+    animation: carroShowStep 0.3s ease;
+}
+
+.carro-step.active {
+    display: block;
+}
+
+@keyframes carroShowStep {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.carro-step-number {
+    color: var(--roxo);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.carro-step h2 {
+    font-size: 23px;
+    margin: 10px 0;
+    color: var(--texto);
+}
+
+.carro-step-description {
+    color: var(--cinza);
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+/* FORMULÁRIOS */
+
+.carro-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.carro-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 0;
+}
+
+.carro-form-group.full {
+    grid-column: 1 / -1;
+}
+
+.carro-form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+.carro-form-group input,
+.carro-form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 9px;
+    background: var(--branco);
+    color: var(--texto);
+    outline: none;
+    font-size: 14px;
+}
+
+.carro-form-group input:focus,
+.carro-form-group select:focus {
+    border-color: var(--roxo);
+    box-shadow: 0 0 0 3px rgba(128,86,184,0.10);
+}
+
+/* INFORMAÇÕES */
+
+.carro-info-box {
+    background: var(--fundo);
+    border-left: 4px solid var(--roxo);
+    padding: 17px;
+    margin-top: 25px;
+    border-radius: 8px;
+}
+
+.carro-info-box strong {
+    color: var(--roxo);
+    font-size: 14px;
+}
+
+.carro-info-box p {
+    margin-top: 7px;
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* BOTÕES */
+
+.carro-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.carro-btn-primary,
+.carro-btn-secondary {
+    border: none;
+    border-radius: 9px;
+    padding: 14px 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.carro-btn-primary {
+    background: var(--roxo);
+    color: white;
+    margin-left: auto;
+}
+
+.carro-btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.carro-btn-primary:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.carro-btn-secondary {
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+.carro-btn-secondary:hover {
+    filter: brightness(0.96);
+}
+
+/* ERROS */
+
+.carro-error {
+    display: none;
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff0f0;
+    color: #b42318;
+    font-size: 13px;
+}
+
+.carro-error.visible {
+    display: block;
+}
+
+/* RESULTADO */
+
+.carro-result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.carro-result-card {
+    padding: 20px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 12px;
+    background: var(--branco);
+    min-width: 0;
+}
+
+.carro-result-card.highlight {
+    background: var(--fundo);
+    border-color: var(--roxo);
+}
+
+.carro-result-card span {
+    display: block;
+    color: var(--cinza);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.carro-result-card strong {
+    font-size: 21px;
+    color: var(--texto);
+    overflow-wrap: anywhere;
+}
+
+.carro-analysis {
+    margin-top: 22px;
+    padding: 20px;
+    background: var(--fundo);
+    border-radius: 12px;
+}
+
+.carro-analysis h3 {
+    margin-bottom: 10px;
+    color: var(--texto);
+    font-size: 16px;
+}
+
+.carro-analysis p {
+    color: var(--cinza);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 9px;
+}
+
+.carro-result-warning {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--cinza);
+    margin-top: 22px;
+    padding: 14px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 8px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+
+    .carro-container {
+        padding: 15px;
+    }
+
+    .carro-panel {
+        padding: 20px;
+    }
+
+    .carro-intro h1 {
+        font-size: 23px;
+    }
+
+    .carro-form-grid,
+    .carro-result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .carro-form-group.full {
+        grid-column: auto;
+    }
+
+    .carro-navigation {
+        flex-wrap: wrap;
+    }
+
+    .carro-btn-primary,
+    .carro-btn-secondary {
+        flex: 1;
+    }
+
+}

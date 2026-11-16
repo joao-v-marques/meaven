@@ -1,0 +1,744 @@
+/* ========================================
+   MEAVEN - PÁGINA DE INVESTIMENTOS
+======================================== */
+
+.investimentos-page {
+    min-width: 0;
+}
+
+.invest-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 38px;
+    margin-bottom: 38px;
+    background: linear-gradient(120deg, #643DA8, #8875A2);
+    border-radius: 18px;
+    color: #FFFFFF;
+}
+
+.invest-hero-text {
+    max-width: 650px;
+}
+
+.invest-tag {
+    display: inline-block;
+    color: #8875A2;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    margin-bottom: 10px;
+}
+
+.invest-hero .invest-tag {
+    color: #F6C744;
+}
+
+.invest-hero h1 {
+    font-size: 30px;
+    line-height: 1.25;
+    margin-bottom: 13px;
+}
+
+.invest-hero p {
+    max-width: 570px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 24px;
+}
+
+.invest-hero-icon {
+    font-size: 90px;
+    min-width: 110px;
+    text-align: center;
+}
+
+.invest-primary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px;
+    background: #FFFFFF;
+    color: #643DA8;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.invest-primary-link:hover {
+    transform: translateY(-2px);
+    background: #F6C744;
+}
+
+.invest-section {
+    margin-bottom: 48px;
+    scroll-margin-top: 25px;
+}
+
+.invest-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.invest-section-heading h2 {
+    color: #2D1B3B;
+    font-size: 24px;
+    margin-bottom: 7px;
+}
+
+.invest-section-heading p {
+    color: #77717E;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.investment-types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.investment-type-card {
+    padding: 22px;
+    background: #FFFFFF;
+    border: 1px solid #E9E3EF;
+    border-radius: 13px;
+    transition: 0.2s;
+}
+
+.investment-type-card:hover {
+    border-color: #8875A2;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(45, 27, 59, 0.07);
+}
+
+.type-icon {
+    font-size: 29px;
+    margin-bottom: 15px;
+}
+
+.type-label {
+    display: block;
+    color: #8875A2;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.investment-type-card h3 {
+    color: #2D1B3B;
+    font-size: 18px;
+    margin-bottom: 9px;
+}
+
+.investment-type-card p {
+    color: #77717E;
+    font-size: 13px;
+    line-height: 1.65;
+    min-height: 85px;
+}
+
+.type-detail {
+    margin-top: 15px;
+    padding-top: 13px;
+    border-top: 1px solid #EEEAF2;
+    color: #594779;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.invest-info-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 16px;
+    background: #F3EFF8;
+    border-radius: 10px;
+    color: #594779;
+}
+
+.invest-info-note span {
+    font-size: 20px;
+}
+
+.invest-info-note p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* SIMULADOR */
+
+.simulator-section {
+    padding: 28px;
+    background: #F8F5FA;
+    border-radius: 16px;
+}
+
+.simulator-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(300px, 1.1fr);
+    gap: 22px;
+}
+
+.invest-form,
+.invest-result {
+    background: #FFFFFF;
+    border: 1px solid #E9E3EF;
+    border-radius: 13px;
+    padding: 24px;
+}
+
+.form-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.form-heading-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    background: #F3EFF8;
+    border-radius: 10px;
+    font-size: 21px;
+}
+
+.form-heading h3 {
+    color: #2D1B3B;
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.form-heading p {
+    color: #77717E;
+    font-size: 12px;
+}
+
+.invest-field {
+    margin-bottom: 17px;
+}
+
+.invest-field label,
+.comparison-period label {
+    display: block;
+    color: #594779;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.invest-field input,
+.comparison-period input {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid #DCD4E5;
+    border-radius: 8px;
+    outline: none;
+    color: #2D1B3B;
+    background: #FFFFFF;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.invest-field input:focus,
+.comparison-period input:focus {
+    border-color: #643DA8;
+    box-shadow: 0 0 0 3px rgba(100, 61, 168, 0.1);
+}
+
+.invest-field small {
+    display: block;
+    color: #77717E;
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+.invest-submit-button,
+.invest-reset-button {
+    width: 100%;
+    min-height: 44px;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.invest-submit-button {
+    background: #643DA8;
+    color: #FFFFFF;
+}
+
+.invest-submit-button:hover {
+    background: #4F2D8D;
+}
+
+.invest-reset-button {
+    margin-top: 9px;
+    background: #F3EFF8;
+    color: #594779;
+}
+
+.invest-reset-button:hover {
+    background: #E9E1F2;
+}
+
+.invest-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 390px;
+}
+
+.result-placeholder {
+    text-align: center;
+    max-width: 300px;
+    margin: auto;
+}
+
+.result-placeholder span {
+    display: block;
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.result-placeholder h3 {
+    color: #2D1B3B;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.result-placeholder p {
+    color: #77717E;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.result-label {
+    color: #8875A2;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.invest-result h3#futureValue {
+    color: #643DA8;
+    font-size: 35px;
+    margin: 10px 0 25px;
+    overflow-wrap: anywhere;
+}
+
+.result-breakdown {
+    display: grid;
+    gap: 13px;
+}
+
+.result-breakdown div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #EEEAF2;
+}
+
+.result-breakdown span {
+    color: #77717E;
+    font-size: 13px;
+}
+
+.result-breakdown strong {
+    color: #2D1B3B;
+    font-size: 13px;
+    text-align: right;
+}
+
+.result-bar-area {
+    margin-top: 24px;
+}
+
+.result-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #77717E;
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.result-bar {
+    display: flex;
+    height: 13px;
+    overflow: hidden;
+    background: #EEEAF2;
+    border-radius: 20px;
+}
+
+.invested-bar {
+    background: #643DA8;
+    width: 50%;
+    transition: width 0.3s;
+}
+
+.earnings-bar {
+    background: #F2B84B;
+    width: 50%;
+    transition: width 0.3s;
+}
+
+.result-explanation {
+    margin-top: 20px;
+    padding: 13px;
+    background: #F8F5FA;
+    border-radius: 8px;
+    color: #594779;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.simulation-disclaimer {
+    margin-top: 15px;
+    color: #77717E;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* COMPARADOR */
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.comparison-card {
+    padding: 22px;
+    background: #FFFFFF;
+    border: 1px solid #E9E3EF;
+    border-radius: 12px;
+}
+
+.comparison-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.comparison-number {
+    display: grid;
+    place-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 9px;
+    background: #F3EFF8;
+    color: #643DA8;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.comparison-card-heading h3 {
+    color: #2D1B3B;
+    font-size: 17px;
+}
+
+.comparison-period {
+    max-width: 300px;
+    margin-top: 20px;
+}
+
+.compare-button {
+    max-width: 300px;
+    margin-top: 15px;
+}
+
+.comparison-result {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 22px;
+}
+
+.comparison-result-card {
+    padding: 20px;
+    background: #F8F5FA;
+    border-radius: 11px;
+}
+
+.comparison-result-card span,
+.comparison-result-card small {
+    display: block;
+    color: #77717E;
+    font-size: 12px;
+}
+
+.comparison-result-card strong {
+    display: block;
+    color: #643DA8;
+    font-size: 23px;
+    margin: 10px 0;
+    overflow-wrap: anywhere;
+}
+
+.comparison-result-card small {
+    line-height: 1.5;
+}
+
+.comparison-result > p {
+    grid-column: 1 / -1;
+    padding: 15px;
+    background: #F3EFF8;
+    color: #594779;
+    border-radius: 9px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* QUIZ */
+
+.quiz-section {
+    padding: 28px;
+    background: #F8F5FA;
+    border-radius: 16px;
+}
+
+.quiz-card,
+.quiz-finish {
+    max-width: 760px;
+    padding: 25px;
+    background: #FFFFFF;
+    border: 1px solid #E9E3EF;
+    border-radius: 13px;
+}
+
+.quiz-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #77717E;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.quiz-progress-track {
+    height: 7px;
+    margin: 13px 0 25px;
+    background: #EEEAF2;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.quiz-progress-fill {
+    height: 100%;
+    width: 20%;
+    background: #643DA8;
+    border-radius: 20px;
+    transition: width 0.3s;
+}
+
+.quiz-card > h3 {
+    color: #2D1B3B;
+    font-size: 19px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 10px;
+}
+
+.quiz-option {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #E2DCE9;
+    border-radius: 9px;
+    background: #FFFFFF;
+    color: #594779;
+    text-align: left;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.quiz-option:hover:not(:disabled) {
+    border-color: #8875A2;
+    background: #F8F5FA;
+}
+
+.quiz-option:disabled {
+    cursor: default;
+}
+
+.quiz-option.correct {
+    border-color: #32966A;
+    background: #EAF7F0;
+    color: #216B49;
+}
+
+.quiz-option.incorrect {
+    border-color: #D66A6A;
+    background: #FFF0F0;
+    color: #A23C3C;
+}
+
+.quiz-feedback {
+    margin-top: 17px;
+    padding: 14px;
+    border-radius: 9px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.quiz-feedback.correct-feedback {
+    background: #EAF7F0;
+    color: #216B49;
+}
+
+.quiz-feedback.incorrect-feedback {
+    background: #FFF0F0;
+    color: #A23C3C;
+}
+
+.quiz-actions {
+    margin-top: 20px;
+}
+
+.quiz-actions button {
+    max-width: 220px;
+}
+
+.quiz-finish {
+    text-align: center;
+}
+
+.quiz-finish > span {
+    font-size: 48px;
+}
+
+.quiz-finish h3 {
+    margin: 12px 0;
+    color: #2D1B3B;
+    font-size: 23px;
+}
+
+.quiz-finish p {
+    margin-bottom: 20px;
+    color: #77717E;
+    line-height: 1.6;
+}
+
+.quiz-finish button {
+    max-width: 220px;
+}
+
+/* RODAPÉ */
+
+.invest-footer {
+    padding: 20px 0;
+    border-top: 1px solid #E9E3EF;
+    color: #77717E;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1050px) {
+    .investment-types-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .simulator-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .invest-result {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 700px) {
+    .invest-hero {
+        padding: 25px;
+    }
+
+    .invest-hero h1 {
+        font-size: 24px;
+    }
+
+    .invest-hero-icon {
+        font-size: 55px;
+        min-width: 65px;
+    }
+
+    .investment-types-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .investment-type-card p {
+        min-height: auto;
+    }
+
+    .comparison-grid,
+    .comparison-result {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-result > p {
+        grid-column: auto;
+    }
+
+    .simulator-section,
+    .quiz-section {
+        padding: 18px;
+    }
+
+    .invest-form,
+    .invest-result,
+    .comparison-card,
+    .quiz-card,
+    .quiz-finish {
+        padding: 18px;
+    }
+
+    .invest-result h3#futureValue {
+        font-size: 29px;
+    }
+}
+
+@media (max-width: 450px) {
+    .invest-hero {
+        padding: 20px;
+    }
+
+    .invest-hero-icon {
+        display: none;
+    }
+
+    .invest-section-heading h2 {
+        font-size: 21px;
+    }
+
+    .result-breakdown div {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .quiz-top {
+        font-size: 11px;
+    }
+}

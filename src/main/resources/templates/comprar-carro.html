@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MEAVEN | Comprar Carro</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/comprar-carro.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- MENU LATERAL PADRÃO MEAVEN -->
+    <aside class="sidebar">
+
+        <div class="logo-area">
+            <div class="logo">M</div>
+            <p>Projeto Extracurricular</p>
+        </div>
+
+        <nav class="menu">
+
+            <a href="/meaven/" class="menu-item">
+                ⌂ Início
+            </a>
+
+            <a href="/meaven/simulations" class="menu-item active">
+                ◎ Simulações
+            </a>
+
+            <a href="/meaven/concepts" class="menu-item">
+                ♙ Conceitos
+            </a>
+
+            <a href="/meaven/investments" class="menu-item">
+                ♧ Investimentos
+            </a>
+
+            <a href="historico.html" class="menu-item">
+                ◷ Histórico
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+
+        <header class="header">
+
+            <div class="user-info">
+                <div class="avatar-small" id="headerAvatar">U</div>
+
+                <div>
+                    <strong id="headerName">Participante</strong>
+                    <span id="headerLevel">Iniciante</span>
+                </div>
+            </div>
+
+            <div class="header-info">
+                <span>MEAVEN</span>
+                <span>Educação Financeira</span>
+            </div>
+
+        </header>
+
+        <section class="carro-container">
+
+            <a href="/meaven/simulations" class="carro-back-link">
+                ← Voltar para simulações
+            </a>
+
+            <div class="carro-intro">
+
+                <span class="carro-tag">PLANEJAMENTO FINANCEIRO</span>
+
+                <h1>Vamos planejar a compra do seu carro?</h1>
+
+                <p>
+                    Descubra quanto custa adquirir um veículo e avalie
+                    se essa decisão cabe no seu orçamento.
+                </p>
+
+            </div>
+
+            <section class="carro-panel">
+
+                <!-- PROGRESSO -->
+                <div class="carro-progress-area">
+
+                    <div class="carro-progress-info">
+                        <span id="carroStepLabel">Etapa 1 de 4</span>
+                        <span id="carroProgressPercent">25%</span>
+                    </div>
+
+                    <div class="carro-progress-track">
+                        <div id="carroProgressBar"></div>
+                    </div>
+
+                </div>
+
+                <!-- ETAPA 1 -->
+                <div class="carro-step active" data-step="1">
+
+                    <span class="carro-step-number">ETAPA 01</span>
+
+                    <h2>Sobre o veículo</h2>
+
+                    <p class="carro-step-description">
+                        Informe os dados do carro que você pretende comprar.
+                    </p>
+
+                    <div class="carro-form-grid">
+
+                        <div class="carro-form-group full">
+                            <label for="carroValor">
+                                Valor do veículo (R$)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="carroValor"
+                                min="1"
+                                step="0.01"
+                                placeholder="Ex.: 75000"
+                            >
+                        </div>
+
+                        <div class="carro-form-group">
+                            <label for="carroModelo">
+                                Modelo do veículo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="carroModelo"
+                                placeholder="Ex.: Fiat Argo"
+                            >
+                        </div>
+
+                        <div class="carro-form-group">
+                            <label for="carroCondicao">
+                                Condição do veículo
+                            </label>
+
+                            <select id="carroCondicao">
+                                <option value="">Selecione</option>
+                                <option value="Novo">Novo</option>
+                                <option value="Usado">Usado</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="carro-info-box">
+                        <strong>Dica MEAVEN</strong>
+                        <p>
+                            Além do preço de compra, um carro gera despesas
+                            recorrentes. Vamos considerar alguns desses custos
+                            no seu planejamento.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- ETAPA 2 -->
+                <div class="carro-step" data-step="2">
+
+                    <span class="carro-step-number">ETAPA 02</span>
+
+                    <h2>Sua situação financeira</h2>
+
+                    <p class="carro-step-description">
+                        Informe sua renda e quanto você possui para dar de entrada.
+                    </p>
+
+                    <div class="carro-form-grid">
+
+                        <div class="carro-form-group">
+                            <label for="carroRenda">
+                                Renda mensal (R$)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="carroRenda"
+                                min="0"
+                                step="0.01"
+                                placeholder="Ex.: 4500"
+                            >
+                        </div>
+
+                        <div class="carro-form-group">
+                            <label for="carroDespesas">
+                                Despesas mensais atuais (R$)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="carroDespesas"
+                                min="0"
+                                step="0.01"
+                                placeholder="Ex.: 2200"
+                            >
+                        </div>
+
+                        <div class="carro-form-group full">
+                            <label for="carroEntrada">
+                                Valor disponível para entrada (R$)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="carroEntrada"
+                                min="0"
+                                step="0.01"
+                                placeholder="Ex.: 15000"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="carro-info-box">
+                        <strong>Organize seu orçamento</strong>
+                        <p>
+                            Uma entrada maior reduz o valor financiado.
+                            Evite utilizar toda sua reserva financeira para
+                            comprar o veículo.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- ETAPA 3 -->
+                <div class="carro-step" data-step="3">
+
+                    <span class="carro-step-number">ETAPA 03</span>
+
+                    <h2>Como pretende pagar?</h2>
+
+                    <p class="carro-step-description">
+                        Defina o prazo e os custos que deseja considerar.
+                    </p>
+
+                    <div class="carro-form-grid">
+
+                        <div class="carro-form-group">
+                            <label for="carroPrazo">
+                                Prazo do financiamento
+                            </label>
+
+                            <select id="carroPrazo">
+                                <option value="12">12 meses</option>
+                                <option value="24">24 meses</option>
+                                <option value="36" selected>36 meses</option>
+                                <option value="48">48 meses</option>
+                                <option value="60">60 meses</option>
+                                <option value="72">72 meses</option>
+                            </select>
+                        </div>
+
+                        <div class="carro-form-group">
+                            <label for="carroJuros">
+                                Taxa de juros anual (%)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="carroJuros"
+                                min="0"
+                                max="100"
+                                step="0.01"
+                                value="18"
+                            >
+                        </div>
+
+                        <div class="carro-form-group full">
+                            <label for="carroSistema">
+                                Sistema de amortização
+                            </label>
+
+                            <select id="carroSistema">
+                                <option value="PRICE">Tabela Price</option>
+                                <option value="SAC">Tabela SAC</option>
+                            </select>
+                        </div>
+
+                        <div class="carro-form-group">
+                            <label for="carroCombustivel">
+                                Combustível por mês (R$)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="carroCombustivel"
+                                min="0"
+                                step="0.01"
+                                placeholder="Ex.: 500"
+                                value="0"
+                            >
+                        </div>
+
+                        <div class="carro-form-group">
+                            <label for="carroOutrosCustos">
+                                Outros custos mensais (R$)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="carroOutrosCustos"
+                                min="0"
+                                step="0.01"
+                                placeholder="Ex.: 250"
+                                value="0"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="carro-info-box">
+                        <strong>O que são outros custos?</strong>
+                        <p>
+                            Você pode incluir uma estimativa mensal de manutenção,
+                            seguro, estacionamento e outros gastos. Não inclua
+                            novamente o combustível nesse campo.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- ETAPA 4 -->
+                <div class="carro-step" data-step="4">
+
+                    <span class="carro-step-number">ETAPA 04</span>
+
+                    <h2>Resultado do planejamento</h2>
+
+                    <p class="carro-step-description">
+                        Veja o impacto estimado da compra do veículo no seu orçamento.
+                    </p>
+
+                    <div id="carroResultado"></div>
+
+                    <div class="carro-result-warning">
+                        Simulação educativa. Os valores não representam uma
+                        proposta de financiamento. Não estão incluídos impostos,
+                        documentação, tarifas ou eventuais variações de custos.
+                    </div>
+
+                </div>
+
+                <!-- ERROS -->
+                <div
+                    id="carroErro"
+                    class="carro-error"
+                    role="alert"
+                    aria-live="polite">
+                </div>
+
+                <!-- NAVEGAÇÃO -->
+                <div class="carro-navigation">
+
+                    <button
+                        type="button"
+                        id="carroVoltar"
+                        class="carro-btn-secondary"
+                        hidden>
+                        Voltar
+                    </button>
+
+                    <button
+                        type="button"
+                        id="carroAvancar"
+                        class="carro-btn-primary">
+                        Continuar
+                    </button>
+
+                    <button
+                        type="button"
+                        id="carroFinalizar"
+                        class="carro-btn-primary"
+                        hidden>
+                        Finalizar simulação
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="../js/script.js"></script>
+<script src="../js/comprar-carro.js"></script>
+
+</body>
+</html>

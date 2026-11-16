@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEAVEN | Empréstimo</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/emprestimo.css">
+</head>
+<body>
+
+    <div class="layout">
+
+        <!-- MENU LATERAL ORIGINAL -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo">M</div>
+                <p>Projeto Extracurricular</p>
+            </div>
+
+            <nav class="menu">
+                <a href="/meaven/" class="menu-item">⌂ Início</a>
+                <a href="/meaven/simulations" class="menu-item active">◎ Simulações</a>
+                <a href="/meaven/concepts" class="menu-item">♙ Conceitos</a>
+                <a href="/meaven/investments" class="menu-item">♧ Investimentos</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+
+            <!-- CABEÇALHO ORIGINAL -->
+            <header class="header">
+                <div class="user-info">
+                    <div class="avatar-small" id="headerAvatar">U</div>
+                    <div>
+                        <strong id="headerName">Participante</strong>
+                        <span id="headerLevel">Iniciante</span>
+                    </div>
+                </div>
+
+                <div class="header-info">
+                    <span id="headerCapital">R$ 0,00</span>
+                    <span>Planejamento financeiro</span>
+                </div>
+            </header>
+
+            <section class="emprestimo-container">
+
+                <a href="/meaven/simulations" class="emprestimo-voltar">
+                    ← Voltar para simulações
+                </a>
+
+                <div class="emprestimo-intro">
+                    <span class="emprestimo-etiqueta">SIMULAÇÃO FINANCEIRA</span>
+                    <h1>Planeje seu empréstimo</h1>
+                    <p>
+                        Descubra quanto você pagará, entenda os juros envolvidos
+                        e avalie se as parcelas cabem no seu orçamento.
+                    </p>
+                </div>
+
+                <!-- PROGRESSO -->
+                <div class="emprestimo-progresso-area">
+
+                    <div class="emprestimo-progresso-texto">
+                        <span id="emprestimoEtapaTexto">Etapa 1 de 4</span>
+                        <span id="emprestimoPercentual">25%</span>
+                    </div>
+
+                    <div class="emprestimo-progresso-trilho">
+                        <div id="emprestimoProgressoBarra"></div>
+                    </div>
+
+                    <div class="emprestimo-indicadores">
+                        <span class="ativo" data-indicador="0">1. Empréstimo</span>
+                        <span data-indicador="1">2. Condições</span>
+                        <span data-indicador="2">3. Finanças</span>
+                        <span data-indicador="3">4. Resultado</span>
+                    </div>
+
+                </div>
+
+                <form id="formEmprestimo" novalidate>
+
+                    <!-- ETAPA 1 -->
+                    <section class="emprestimo-etapa ativa" data-etapa="0">
+
+                        <div class="emprestimo-card">
+
+                            <div class="emprestimo-card-cabecalho">
+                                <span class="emprestimo-numero">01</span>
+
+                                <div>
+                                    <h2>Quanto você precisa?</h2>
+                                    <p>
+                                        Informe o valor desejado e a finalidade
+                                        do empréstimo.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="emprestimo-grid">
+
+                                <label class="emprestimo-campo emprestimo-campo-largo">
+                                    Valor desejado (R$)
+                                    <input
+                                        type="number"
+                                        id="valorEmprestimo"
+                                        min="0.01"
+                                        step="0.01"
+                                        placeholder="Ex.: 5000,00"
+                                        required
+                                    >
+                                </label>
+
+                                <label class="emprestimo-campo emprestimo-campo-largo">
+                                    Qual será a finalidade do empréstimo?
+                                    <select id="finalidade" required>
+                                        <option value="">Selecione uma finalidade</option>
+                                        <option value="Organização financeira">Organização financeira</option>
+                                        <option value="Reforma ou construção">Reforma ou construção</option>
+                                        <option value="Compra de veículo">Compra de veículo</option>
+                                        <option value="Educação">Educação</option>
+                                        <option value="Saúde">Saúde</option>
+                                        <option value="Viagem">Viagem</option>
+                                        <option value="Investimento em negócio">Investimento em negócio</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <!-- ETAPA 2 -->
+                    <section class="emprestimo-etapa" data-etapa="1" hidden>
+
+                        <div class="emprestimo-card">
+
+                            <div class="emprestimo-card-cabecalho">
+                                <span class="emprestimo-numero">02</span>
+
+                                <div>
+                                    <h2>Quais são as condições?</h2>
+                                    <p>
+                                        Informe a taxa e o prazo apresentados
+                                        na proposta de empréstimo.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="emprestimo-aviso">
+                                Utilize os dados de uma proposta real, se tiver.
+                                A plataforma não consulta taxas bancárias automaticamente.
+                            </div>
+
+                            <div class="emprestimo-grid">
+
+                                <label class="emprestimo-campo">
+                                    Taxa de juros mensal (%)
+                                    <input
+                                        type="number"
+                                        id="taxaMensal"
+                                        min="0"
+                                        max="100"
+                                        step="0.01"
+                                        placeholder="Ex.: 2,5"
+                                        required
+                                    >
+                                    <small>Informe a taxa mensal da proposta.</small>
+                                </label>
+
+                                <label class="emprestimo-campo">
+                                    Prazo de pagamento (meses)
+                                    <input
+                                        type="number"
+                                        id="prazoMeses"
+                                        min="1"
+                                        max="600"
+                                        step="1"
+                                        placeholder="Ex.: 24"
+                                        required
+                                    >
+                                </label>
+
+                                <label class="emprestimo-campo">
+                                    Método de amortização
+                                    <select id="metodoPagamento" required>
+                                        <option value="price">Price - parcelas fixas</option>
+                                        <option value="sac">SAC - parcelas decrescentes</option>
+                                    </select>
+                                </label>
+
+                                <label class="emprestimo-campo">
+                                    Tarifas adicionais (R$)
+                                    <input
+                                        type="number"
+                                        id="tarifas"
+                                        min="0"
+                                        step="0.01"
+                                        value="0"
+                                        required
+                                    >
+                                    <small>
+                                        Informe o total de tarifas e encargos conhecidos.
+                                    </small>
+                                </label>
+
+                            </div>
+
+                            <div class="emprestimo-aviso emprestimo-aviso-secundario">
+                                As tarifas serão consideradas como custos adicionais
+                                pagos junto ao empréstimo, mas não serão incorporadas
+                                ao saldo financiado. O cálculo não representa o CET oficial.
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- ETAPA 3 -->
+                    <section class="emprestimo-etapa" data-etapa="2" hidden>
+
+                        <div class="emprestimo-card">
+
+                            <div class="emprestimo-card-cabecalho">
+                                <span class="emprestimo-numero">03</span>
+
+                                <div>
+                                    <h2>Como está sua situação financeira?</h2>
+                                    <p>
+                                        Vamos avaliar o impacto da nova parcela
+                                        no seu orçamento mensal.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="emprestimo-grid">
+
+                                <label class="emprestimo-campo">
+                                    Renda mensal (R$)
+                                    <input
+                                        type="number"
+                                        id="rendaMensal"
+                                        min="0"
+                                        step="0.01"
+                                        placeholder="Ex.: 3000"
+                                        required
+                                    >
+                                </label>
+
+                                <label class="emprestimo-campo">
+                                    Despesas mensais (R$)
+                                    <input
+                                        type="number"
+                                        id="despesasMensais"
+                                        min="0"
+                                        step="0.01"
+                                        placeholder="Ex.: 1500"
+                                        required
+                                    >
+                                </label>
+
+                                <label class="emprestimo-campo emprestimo-campo-largo">
+                                    Parcelas de outras dívidas (R$)
+                                    <input
+                                        type="number"
+                                        id="outrasDividas"
+                                        min="0"
+                                        step="0.01"
+                                        value="0"
+                                        required
+                                    >
+                                    <small>
+                                        Informe o total mensal de parcelas de outros empréstimos,
+                                        financiamentos ou dívidas. Não repita valores já incluídos
+                                        nas despesas mensais.
+                                    </small>
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- ETAPA 4 -->
+                    <section class="emprestimo-etapa" data-etapa="3" hidden>
+
+                        <div class="emprestimo-card">
+
+                            <div class="emprestimo-card-cabecalho">
+                                <span class="emprestimo-numero">04</span>
+
+                                <div>
+                                    <h2>Resultado da simulação</h2>
+                                    <p>
+                                        Confira os custos estimados e o impacto
+                                        do empréstimo no seu orçamento.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="emprestimoResultado" aria-live="polite"></div>
+
+                            <p class="emprestimo-disclaimer">
+                                Simulação educativa baseada nos dados informados.
+                                Os valores são estimativas matemáticas e não representam
+                                uma oferta de crédito. O cálculo não considera encargos
+                                não informados, seguros, impostos, IOF ou condições
+                                específicas de instituições financeiras.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                    <div
+                        class="emprestimo-erro"
+                        id="emprestimoErro"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+                    <div class="emprestimo-acoes">
+
+                        <button
+                            type="button"
+                            class="emprestimo-btn emprestimo-btn-secundario"
+                            id="btnAnterior"
+                            disabled
+                        >
+                            Voltar
+                        </button>
+
+                        <button
+                            type="button"
+                            class="emprestimo-btn emprestimo-btn-principal"
+                            id="btnProximo"
+                        >
+                            Continuar →
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/emprestimo.js"></script>
+
+</body>
+</html>

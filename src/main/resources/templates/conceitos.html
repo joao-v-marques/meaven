@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MEAVEN | Conceitos Financeiros</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/conceitos.css">
+</head>
+<body>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+
+            <div class="logo-area">
+                <div class="logo">M</div>
+                <p>Projeto Extracurricular</p>
+            </div>
+
+            <nav class="menu">
+                <a href="/meaven/" class="menu-item">
+                    ⌂ Início
+                </a>
+
+                <a href="/meaven/simulations" class="menu-item">
+                    ◎ Simulações
+                </a>
+
+                <a href="/meaven/concepts" class="menu-item active">
+                    ♙ Conceitos
+                </a>
+
+                <a href="/meaven/investments" class="menu-item">
+                    ♧ Investimentos
+                </a>
+            </nav>
+
+        </aside>
+
+        <main class="main-content">
+
+            <header class="header conceitos-header">
+
+                <div class="user-info">
+                    <div class="avatar-small" id="conceitosAvatar">M</div>
+
+                    <div class="user-details">
+                        <strong id="conceitosNome">Participante</strong>
+                        <span>Área de aprendizagem</span>
+                    </div>
+                </div>
+
+                <div class="header-info">
+                    <span>MEAVEN</span>
+                    <span>Educação financeira</span>
+                </div>
+
+            </header>
+
+            <section class="conceitos-container">
+
+                <!-- TELA DE CATEGORIAS -->
+                <section id="categoriasView">
+
+                    <div class="conceitos-intro">
+
+                        <div>
+                            <span class="conceitos-tag">
+                                APRENDIZAGEM FINANCEIRA
+                            </span>
+
+                            <h1>Aprenda sobre finanças</h1>
+
+                            <p>
+                                Explore conceitos financeiros, entenda como
+                                seu dinheiro funciona e desenvolva conhecimentos
+                                para tomar decisões mais conscientes.
+                            </p>
+                        </div>
+
+                        <div class="conceitos-ilustracao">
+                            📚
+                        </div>
+
+                    </div>
+
+                    <div class="conceitos-busca">
+
+                        <label for="buscaConceitos">
+                            O que você deseja aprender?
+                        </label>
+
+                        <input
+                            type="search"
+                            id="buscaConceitos"
+                            placeholder="Ex.: renda fixa, juros, inflação..."
+                        >
+
+                    </div>
+
+                    <div class="categorias-heading">
+                        <div>
+                            <h2>Explore por categoria</h2>
+                            <p>Escolha um assunto para começar a aprender.</p>
+                        </div>
+                    </div>
+
+                    <div class="categorias-grid" id="categoriasGrid">
+
+                        <!-- Os cards serão criados pelo JavaScript -->
+
+                    </div>
+
+                    <p class="busca-vazia" id="buscaVazia" hidden>
+                        Nenhuma categoria encontrada. Tente outro termo.
+                    </p>
+
+                </section>
+
+
+                <!-- TELA DE CONTEÚDO -->
+                <section id="conteudoView" hidden>
+
+                    <button
+                        type="button"
+                        class="voltar-categorias"
+                        id="voltarCategorias"
+                    >
+                        ← Voltar para categorias
+                    </button>
+
+                    <div class="categoria-apresentacao">
+
+                        <div class="categoria-icone" id="categoriaIcone">
+                            💰
+                        </div>
+
+                        <div>
+                            <span class="conceitos-tag">
+                                CATEGORIA DE APRENDIZAGEM
+                            </span>
+
+                            <h1 id="categoriaTitulo">
+                                Nome da categoria
+                            </h1>
+
+                            <p id="categoriaDescricao">
+                                Descrição da categoria.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="conteudo-layout">
+
+                        <aside class="topicos-card">
+
+                            <h2>Conteúdos</h2>
+
+                            <p>
+                                Selecione um assunto para estudar.
+                            </p>
+
+                            <nav
+                                class="lista-topicos"
+                                id="listaTopicos"
+                                aria-label="Conteúdos da categoria"
+                            >
+                            </nav>
+
+                        </aside>
+
+                        <article
+                            class="artigo-conceito"
+                            id="artigoConceito"
+                        >
+
+                            <div class="artigo-placeholder">
+                                <span>📖</span>
+                                <h2>Escolha um conteúdo</h2>
+                                <p>
+                                    Selecione um dos assuntos ao lado para
+                                    começar sua aprendizagem.
+                                </p>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+            <footer class="conceitos-footer">
+                <p>
+                    MEAVEN — Aprender sobre dinheiro é o primeiro passo
+                    para tomar decisões melhores.
+                </p>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="../js/conceitos.js"></script>
+
+</body>
+</html>

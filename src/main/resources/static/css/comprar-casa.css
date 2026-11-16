@@ -1,0 +1,350 @@
+
+/* =========================================
+   MEAVEN - SIMULAÇÃO COMPRAR CASA
+   Compatível com o style.css principal
+========================================= */
+
+.casa-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.casa-back-link {
+    display: inline-block;
+    color: var(--roxo);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.casa-intro {
+    margin-bottom: 30px;
+}
+
+.casa-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--roxo);
+}
+
+.casa-intro h1 {
+    font-size: 29px;
+    margin: 10px 0;
+    color: var(--texto);
+}
+
+.casa-intro p {
+    color: var(--cinza);
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.casa-simulation-panel {
+    display: block;
+    width: 100%;
+    min-height: auto;
+    box-sizing: border-box;
+    background: var(--branco);
+    border: 1px solid var(--roxo-borda);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+
+.casa-progress-area {
+    margin-bottom: 35px;
+}
+
+.casa-progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--cinza);
+}
+
+.casa-progress-track {
+    height: 8px;
+    border-radius: 20px;
+    background: var(--fundo);
+    overflow: hidden;
+}
+
+#progressBar {
+    width: 25%;
+    height: 100%;
+    background: var(--roxo);
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+.simulation-step {
+    display: none;
+    animation: casaShowStep 0.3s ease;
+}
+
+.simulation-step.active {
+    display: block;
+}
+
+@keyframes casaShowStep {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.casa-step-number {
+    color: var(--roxo);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.simulation-step h2 {
+    font-size: 23px;
+    margin: 10px 0;
+    color: var(--texto);
+}
+
+.casa-step-description {
+    color: var(--cinza);
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+.casa-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.casa-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 0;
+}
+
+.casa-form-group.full {
+    grid-column: 1 / -1;
+}
+
+.casa-form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+.casa-form-group input,
+.casa-form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 9px;
+    background: var(--branco);
+    color: var(--texto);
+    outline: none;
+    font-size: 14px;
+}
+
+.casa-form-group input:focus,
+.casa-form-group select:focus {
+    border-color: var(--roxo);
+    box-shadow: 0 0 0 3px rgba(128,86,184,0.10);
+}
+
+.casa-info-box {
+    background: var(--fundo);
+    border-left: 4px solid var(--roxo);
+    padding: 17px;
+    margin-top: 25px;
+    border-radius: 8px;
+}
+
+.casa-info-box strong {
+    color: var(--roxo);
+    font-size: 14px;
+}
+
+.casa-info-box p {
+    margin-top: 7px;
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.casa-navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.casa-btn-primary,
+.casa-btn-secondary {
+    border: none;
+    border-radius: 9px;
+    padding: 14px 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.casa-btn-primary {
+    background: var(--roxo);
+    color: white;
+    margin-left: auto;
+}
+
+.casa-btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.casa-btn-primary:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.casa-btn-secondary {
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+.casa-btn-secondary:hover {
+    filter: brightness(0.96);
+}
+
+.casa-form-error {
+    display: none;
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff0f0;
+    color: #b42318;
+    font-size: 13px;
+}
+
+.casa-form-error.visible {
+    display: block;
+}
+
+/* RESULTADOS */
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.result-card {
+    padding: 20px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 12px;
+    background: var(--branco);
+    min-width: 0;
+}
+
+.result-card.highlight {
+    background: var(--fundo);
+    border-color: var(--roxo);
+}
+
+.result-card span {
+    display: block;
+    color: var(--cinza);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.result-card strong {
+    font-size: 21px;
+    color: var(--texto);
+    overflow-wrap: anywhere;
+}
+
+.result-card small {
+    display: block;
+    margin-top: 7px;
+    color: var(--cinza);
+}
+
+.result-analysis {
+    margin-top: 22px;
+    padding: 20px;
+    background: var(--fundo);
+    border-radius: 12px;
+}
+
+.result-analysis h3 {
+    margin-bottom: 10px;
+    color: var(--texto);
+    font-size: 16px;
+}
+
+.result-analysis p {
+    color: var(--cinza);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 9px;
+}
+
+.casa-result-warning {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--cinza);
+    margin-top: 22px;
+    padding: 14px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 8px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+
+    .casa-container {
+        padding: 15px;
+    }
+
+    .casa-simulation-panel {
+        padding: 20px;
+    }
+
+    .casa-intro h1 {
+        font-size: 23px;
+    }
+
+    .casa-form-grid,
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .casa-form-group.full {
+        grid-column: auto;
+    }
+
+    .casa-navigation-buttons {
+        flex-wrap: wrap;
+    }
+
+    .casa-btn-primary,
+    .casa-btn-secondary {
+        flex: 1;
+    }
+
+}

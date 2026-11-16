@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEAVEN | Fazer uma Viagem</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/fazer-viagem.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo">M</div>
+                <p>Projeto Extracurricular</p>
+            </div>
+            <nav class="menu">
+                <a href="/meaven/" class="menu-item">⌂ Início</a>
+                <a href="/meaven/simulations" class="menu-item active">◎ Simulações</a>
+                <a href="/meaven/concepts" class="menu-item">♙ Conceitos</a>
+                <a href="/meaven/investments" class="menu-item">♧ Investimentos</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="user-info">
+                    <div class="avatar-small" id="headerAvatar">U</div>
+                    <div>
+                        <strong id="headerName">Participante</strong>
+                        <span id="headerLevel">Iniciante</span>
+                    </div>
+                </div>
+                <div class="header-info">
+                    <span id="headerCapital">R$ 0,00</span>
+                    <span>Planejamento financeiro</span>
+                </div>
+            </header>
+
+            <section class="viagem-container">
+                <a class="viagem-voltar" href="/meaven/simulations">← Voltar para simulações</a>
+
+                <div class="viagem-intro">
+                    <span class="viagem-etiqueta">SIMULAÇÃO FINANCEIRA</span>
+                    <h1>Planeje sua viagem</h1>
+                    <p>Organize os custos, descubra quanto precisa economizar e veja como se preparar financeiramente para viajar.</p>
+                </div>
+
+                <div class="viagem-progresso-area">
+                    <div class="viagem-progresso-texto">
+                        <span id="viagemEtapaTexto">Etapa 1 de 4</span>
+                        <span id="viagemPercentual">25%</span>
+                    </div>
+                    <div class="viagem-progresso-trilho">
+                        <div id="viagemProgressoBarra"></div>
+                    </div>
+                    <div class="viagem-etapas-indicadores">
+                        <span class="ativo" data-indicador="0">1. Destino</span>
+                        <span data-indicador="1">2. Custos</span>
+                        <span data-indicador="2">3. Finanças</span>
+                        <span data-indicador="3">4. Resultado</span>
+                    </div>
+                </div>
+
+                <form id="formViagem" novalidate>
+
+                    <!-- ETAPA 1: DESTINO -->
+                    <section class="viagem-etapa ativa" data-etapa="0">
+                        <div class="viagem-card">
+                            <div class="viagem-card-cabecalho">
+                                <span class="viagem-numero-etapa">01</span>
+                                <div>
+                                    <h2>Para onde você quer ir?</h2>
+                                    <p>Comece informando os detalhes básicos da sua viagem.</p>
+                                </div>
+                            </div>
+
+                            <div class="viagem-grid">
+                                <label class="viagem-campo viagem-campo-largo">
+                                    Destino
+                                    <input type="text" id="destino" maxlength="80" placeholder="Ex.: Rio de Janeiro, Brasil" required>
+                                </label>
+
+                                <label class="viagem-campo">
+                                    Quantidade de pessoas
+                                    <input type="number" id="pessoas" min="1" max="30" step="1" value="1" required>
+                                </label>
+
+                                <label class="viagem-campo">
+                                    Duração da viagem (dias)
+                                    <input type="number" id="duracao" min="1" max="365" step="1" placeholder="Ex.: 7" required>
+                                </label>
+
+                                <label class="viagem-campo">
+                                    Data prevista para viajar
+                                    <input type="date" id="dataViagem">
+                                    <small>Opcional. Informe se já tiver uma previsão.</small>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ETAPA 2: CUSTOS -->
+                    <section class="viagem-etapa" data-etapa="1" hidden>
+                        <div class="viagem-card">
+                            <div class="viagem-card-cabecalho">
+                                <span class="viagem-numero-etapa">02</span>
+                                <div>
+                                    <h2>Quanto a viagem vai custar?</h2>
+                                    <p>Informe os valores estimados para todas as pessoas. Se algum item não tiver custo, informe zero.</p>
+                                </div>
+                            </div>
+
+                            <div class="viagem-aviso">
+                                Os valores abaixo representam o custo total estimado da viagem, e não o valor por pessoa.
+                            </div>
+
+                            <div class="viagem-grid">
+                                <label class="viagem-campo">
+                                    Transporte (R$)
+                                    <input type="number" id="transporte" min="0" step="0.01" placeholder="0,00" required>
+                                </label>
+
+                                <label class="viagem-campo">
+                                    Hospedagem (R$)
+                                    <input type="number" id="hospedagem" min="0" step="0.01" placeholder="0,00" required>
+                                </label>
+
+                                <label class="viagem-campo">
+                                    Alimentação (R$)
+                                    <input type="number" id="alimentacao" min="0" step="0.01" placeholder="0,00" required>
+                                </label>
+
+                                <label class="viagem-campo">
+                                    Passeios e atrações (R$)
+                                    <input type="number" id="passeios" min="0" step="0.01" placeholder="0,00" required>
+                                </label>
+
+                                <label class="viagem-campo viagem-campo-largo">
+                                    Outros gastos (R$)
+                                    <input type="number" id="outrosCustos" min="0" step="0.01" placeholder="Ex.: compras, transporte local e imprevistos" required>
+                                </label>
+                            </div>
+
+                            <div class="viagem-total-parcial">
+                                <span>Estimativa atual da viagem</span>
+                                <strong id="viagemCustoParcial">R$ 0,00</strong>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ETAPA 3: FINANÇAS -->
+                    <section class="viagem-etapa" data-etapa="2" hidden>
+                        <div class="viagem-card">
+                            <div class="viagem-card-cabecalho">
+                                <span class="viagem-numero-etapa">03</span>
+                                <div>
+                                    <h2>Como está sua organização financeira?</h2>
+                                    <p>Essas informações ajudam a estimar quanto falta guardar e se o prazo é viável.</p>
+                                </div>
+                            </div>
+
+                            <div class="viagem-grid">
+                                <label class="viagem-campo">
+                                    Valor já guardado para a viagem (R$)
+                                    <input type="number" id="valorGuardado" min="0" step="0.01" value="0" required>
+                                </label>
+
+                                <label class="viagem-campo">
+                                    Renda mensal (R$)
+                                    <input type="number" id="rendaMensal" min="0" step="0.01" placeholder="0,00" required>
+                                </label>
+
+                                <label class="viagem-campo">
+                                    Despesas mensais (R$)
+                                    <input type="number" id="despesasMensais" min="0" step="0.01" placeholder="0,00" required>
+                                </label>
+
+                                <label class="viagem-campo">
+                                    Quanto consegue guardar por mês? (R$)
+                                    <input type="number" id="economiaMensal" min="0" step="0.01" placeholder="0,00" required>
+                                    <small>Considere um valor que caiba no seu orçamento.</small>
+                                </label>
+
+                                <label class="viagem-campo viagem-campo-largo">
+                                    Em quantos meses pretende viajar?
+                                    <input type="number" id="mesesAteViagem" min="1" max="120" step="1" placeholder="Ex.: 6" required>
+                                    <small>Informe o prazo disponível para juntar o dinheiro.</small>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ETAPA 4: RESULTADO -->
+                    <section class="viagem-etapa" data-etapa="3" hidden>
+                        <div class="viagem-card viagem-resultado-card">
+                            <div class="viagem-card-cabecalho">
+                                <span class="viagem-numero-etapa">04</span>
+                                <div>
+                                    <h2>Seu planejamento de viagem</h2>
+                                    <p>Confira a estimativa com base nos valores que você informou.</p>
+                                </div>
+                            </div>
+
+                            <div id="viagemResultado" aria-live="polite"></div>
+
+                            <p class="viagem-disclaimer">
+                                Esta é uma simulação educativa baseada nas informações fornecidas. Os valores são estimativas e podem mudar. Não considera rendimentos de investimentos, inflação ou variações de preços.
+                            </p>
+                        </div>
+                    </section>
+
+                    <div class="viagem-erro" id="viagemErro" role="alert" aria-live="polite"></div>
+
+                    <div class="viagem-acoes">
+                        <button type="button" class="viagem-btn viagem-btn-secundario" id="btnAnterior" disabled>
+                            Voltar
+                        </button>
+
+                        <button type="button" class="viagem-btn viagem-btn-principal" id="btnProximo">
+                            Continuar <span>→</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/fazer-viagem.js"></script>
+</body>
+</html>
