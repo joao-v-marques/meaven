@@ -2,6 +2,13 @@ server:
   servlet:
     context-path: /meaven
 
+app:
+  jwt:
+    secret: ${JWT_SECRET:meaven_dev_secret_key_change_me_in_production_0123456789}
+    expiration: ${JWT_EXPIRATION:86400000}
+  security:
+    cookie-secure: ${COOKIE_SECURE:false}
+
 spring:
   config:
     import: optional:file:.env[.properties]
