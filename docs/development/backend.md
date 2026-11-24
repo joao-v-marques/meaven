@@ -149,6 +149,48 @@ public class ProductController {
 }
 ```
 
+## Documentação da API (Swagger)
+
+A API é documentada com o [springdoc-openapi](https://springdoc.org/). A documentação é gerada a partir do código, então **todo endpoint novo precisa das anotações abaixo**.
+
+> [!IMPORTANT]
+> Os **textos** que aparecem no Swagger (`summary`, `description`, `example` e nomes de tags) são escritos em **português (pt-BR)**, para facilitar o entendimento da equipe. Essa é a única exceção à regra do código em inglês: nomes de classes, métodos, campos, rotas e comentários continuam em inglês.
+
+| O quê | Endereço |
+|---|---|
+| Swagger UI (página interativa) | <http://localhost:8080/meaven/swagger-ui.html> |
+| Especificação OpenAPI (JSON) | <http://localhost:8080/meaven/v3/api-docs> |
+
+**Para testar rotas protegidas no Swagger UI:** chame `POST /api/auth/login`, copie o `token` da resposta, clique em **Authorize** e cole o token em `bearerAuth`.
+
+A configuração geral (título, descrição e esquemas de autenticação) fica em `shared/configs/OpenApiConfig.java`. A variável de ambiente `SWAGGER_ENABLED=false` desliga a documentação, por exemplo em produção.
+
+### Como documentar um endpoint
+
+| Onde | Anotação | Para quê |
+|---|---|---|
+| Controller | `@Tag(name = OpenApiConfig.TAG_PRODUCTS)` | Agrupa as rotas. Crie a constante da tag (ex.: `"Produtos"`) e cadastre a tag em `OpenApiConfig` com uma descrição |
+| Método | `@Operation(summary = "...", description = "...")` | Resumo de uma linha e explicação da rota |
+| Método | `@ApiResponse(responseCode = "...", description = "...")` | Um por status possível, inclusive os de erro (`400`, `401`, `404`, `422`) |
+| Método público | `@SecurityRequirements` (vazio) | Marca a rota como sem autenticação. As outras exigem token por padrão |
+| Parâmetro interno | `@Parameter(hidden = true)` | Esconde `HttpServletRequest` e `@AuthenticationPrincipal` |
+| DTO e campos | `@Schema(description = "...", example = "...")` | Descreve cada campo e dá um valor de exemplo |
+
+Nas respostas de erro, aponte para o `ErrorResponse`:
+
+```java
+@Operation(summary = "Buscar um produto", description = "Devolve um produto pelo ID.")
+@ApiResponse(responseCode = "200", description = "Produto encontrado")
+@ApiResponse(responseCode = "404", description = "Produto não encontrado",
+        content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+@GetMapping("/{id}")
+public ProductResponse findById(@PathVariable Integer id) {
+    return productService.findById(id);
+}
+```
+
+As validações do Bean Validation (`@NotBlank`, `@Size`, ...) já aparecem sozinhas na documentação. Não precisa repetir no `@Schema`.
+
 ## Tratamento de erros
 
 - Lance exceções do `shared/exceptions/` no service, como `NotFoundException`.
@@ -182,3 +224,4 @@ public class ProductController {
 - [ ] O `Request` tem as validações (`@NotBlank`, `@NotNull`, ...) e o controller usa `@Valid`.
 - [ ] Os métodos do service têm `@Transactional`.
 - [ ] Os erros são exceções lançadas no service, sem `try/catch` no controller.
+- [ ] O endpoint tem `@Operation` e um `@ApiResponse` por status, e os DTOs têm `@Schema` com exemplo, com os textos em pt-BR.

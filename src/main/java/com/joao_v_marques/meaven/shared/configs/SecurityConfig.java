@@ -32,6 +32,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/api/auth/login", "/api/auth/logout", "/error", "/css/**", "/js/**", "/img/**").permitAll()
 
+                        // API documentation (Swagger UI and OpenAPI spec); turned off with SWAGGER_ENABLED=false
+                        .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll()
+
                         // Role-restricted routes go here, e.g.:
                         // .requestMatchers("/api/roles/**").hasRole("ADMINISTRATOR")
 
