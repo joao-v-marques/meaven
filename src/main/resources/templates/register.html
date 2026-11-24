@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEAVEN | Criar conta</title>
+    <!-- login.css holds the layout shared by the sign-in and sign-up screens -->
+    <link rel="stylesheet" href="/meaven/css/login.css">
+    <link rel="stylesheet" href="/meaven/css/register.css">
+    <script src="/meaven/js/register.js" defer></script>
+</head>
+<body class="login-page register-page">
+
+    <div class="login-layout">
+
+        <!-- PAINEL DA MARCA -->
+        <aside class="brand-panel">
+
+            <!-- Same wordmark as the sidebar (style.css); here white on the purple panel -->
+            <div class="brand-mark">
+                <svg class="brand-wordmark" viewBox="-3 -11 135 40" role="img" aria-label="MEAVEN">
+                    <path class="brand-letters" d="M0 24V0l9 14 9-14v24M37 0H24v24h13M24 12h10M43 24 52 0l9 24M67 0l9 24 9-24M104 0H91v24h13M91 12h10M110 24V0l18 24V0"/>
+                    <circle class="brand-goal" cx="52" cy="-7" r="3"/>
+                </svg>
+            </div>
+
+            <div class="brand-copy">
+                <h1 class="brand-title">Seu primeiro plano começa aqui.</h1>
+                <p class="brand-text">
+                    Crie sua conta em um minuto e simule decisões de dinheiro
+                    sem arriscar nada de verdade.
+                </p>
+            </div>
+
+            <!-- O que acontece depois do cadastro -->
+            <ol class="signup-steps">
+                <li class="signup-step">
+                    <strong class="signup-step-title">Crie sua conta</strong>
+                    <span class="signup-step-text">Nome, data de nascimento, usuário e senha.</span>
+                </li>
+                <li class="signup-step">
+                    <strong class="signup-step-title">Escolha uma simulação</strong>
+                    <span class="signup-step-text">Carro, casa, viagem, empréstimo, dívida ou negócio.</span>
+                </li>
+                <li class="signup-step">
+                    <strong class="signup-step-title">Veja antes de decidir</strong>
+                    <span class="signup-step-text">Quanto custa, quanto tempo leva e quanto sobra por mês.</span>
+                </li>
+            </ol>
+
+            <p class="brand-footer">Projeto Extracurricular de Educação Financeira</p>
+
+        </aside>
+
+        <!-- FORMULÁRIO -->
+        <main class="login-main">
+
+            <section class="login-card" aria-labelledby="register-title">
+
+                <header class="login-header">
+                    <h2 class="login-title" id="register-title">Criar sua conta</h2>
+                    <p class="login-subtitle">Depois do cadastro você já entra direto no MEAVEN.</p>
+                </header>
+
+                <form class="login-form register-form" id="register-form" novalidate>
+
+                    <div class="form-field">
+                        <label class="form-label" for="name">Nome completo</label>
+                        <input
+                            class="form-input"
+                            type="text"
+                            id="name"
+                            name="name"
+                            maxlength="100"
+                            autocomplete="name"
+                            aria-describedby="name-error"
+                        >
+                        <p class="field-error" id="name-error"></p>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-field">
+                            <label class="form-label" for="birthDate">Data de nascimento</label>
+                            <input
+                                class="form-input"
+                                type="date"
+                                id="birthDate"
+                                name="birthDate"
+                                min="1900-01-01"
+                                autocomplete="bday"
+                                aria-describedby="birthDate-error"
+                            >
+                            <p class="field-error" id="birthDate-error"></p>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label" for="username">Usuário</label>
+                            <input
+                                class="form-input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                maxlength="30"
+                                autocomplete="username"
+                                autocapitalize="none"
+                                spellcheck="false"
+                                aria-describedby="username-hint username-error"
+                            >
+                            <p class="field-hint" id="username-hint">Letras, números, ponto, hífen ou _</p>
+                            <p class="field-error" id="username-error"></p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-field">
+                            <label class="form-label" for="password">Senha</label>
+                            <div class="password-wrapper">
+                                <input
+                                    class="form-input password-input"
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    maxlength="72"
+                                    autocomplete="new-password"
+                                    aria-describedby="password-hint password-error"
+                                >
+                                <button
+                                    class="password-toggle"
+                                    type="button"
+                                    id="password-toggle"
+                                    aria-controls="password confirmPassword"
+                                    aria-pressed="false"
+                                >Mostrar</button>
+                            </div>
+                            <p class="field-hint" id="password-hint">De 4 a 72 caracteres.</p>
+                            <p class="field-error" id="password-error"></p>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label" for="confirmPassword">Repita a senha</label>
+                            <input
+                                class="form-input"
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                maxlength="72"
+                                autocomplete="new-password"
+                                aria-describedby="confirmPassword-error"
+                            >
+                            <p class="field-error" id="confirmPassword-error"></p>
+                        </div>
+
+                    </div>
+
+                    <p class="form-error" id="form-error" role="alert"></p>
+
+                    <button class="submit-button" type="submit" id="submit-button">
+                        <span class="submit-spinner" aria-hidden="true"></span>
+                        <span class="submit-label" id="submit-label">Criar conta</span>
+                    </button>
+
+                </form>
+
+                <footer class="login-footer">
+                    <p class="login-footer-text">Já tem conta?</p>
+                    <a class="secondary-button" href="/meaven/login">Entrar</a>
+                </footer>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

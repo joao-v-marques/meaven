@@ -11,4 +11,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     // Used by the login (CustomUserDetailsService); fetches the role to build the authority
     @Query("SELECT u FROM User u JOIN FETCH u.role WHERE u.username = :username")
     Optional<User> findByUsername(@Param("username") String username);
+
+    // Sign-up blocks "Maria" when "maria" exists, so two accounts never look the same
+    boolean existsByUsernameIgnoreCase(String username);
 }

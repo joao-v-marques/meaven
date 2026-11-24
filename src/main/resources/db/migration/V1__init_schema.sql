@@ -12,7 +12,8 @@ CREATE TABLE roles (
 
 INSERT INTO roles (name)
 VALUES
-    ('ADMINISTRATOR');
+    ('ADMINISTRATOR'),
+    ('USER');
 
 -- Tabela de usuários da aplicação
 CREATE TABLE users (

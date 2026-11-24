@@ -30,7 +30,7 @@ public class SecurityConfig {
 
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/api/auth/login", "/api/auth/logout", "/error", "/css/**", "/js/**", "/img/**").permitAll()
+                        .requestMatchers("/login", "/register", "/api/auth/login", "/api/auth/register", "/api/auth/logout", "/error", "/css/**", "/js/**", "/img/**").permitAll()
 
                         // API documentation (Swagger UI and OpenAPI spec); turned off with SWAGGER_ENABLED=false
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll()
