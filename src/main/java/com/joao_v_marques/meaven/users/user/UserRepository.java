@@ -14,4 +14,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     // Sign-up blocks "Maria" when "maria" exists, so two accounts never look the same
     boolean existsByUsernameIgnoreCase(String username);
+
+    // Same check when someone renames their own account: their current username does not count
+    boolean existsByUsernameIgnoreCaseAndIdNot(String username, Integer id);
 }

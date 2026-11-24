@@ -10,6 +10,7 @@ import com.joao_v_marques.meaven.users.auth.dto.AuthResponse;
 import com.joao_v_marques.meaven.users.auth.dto.ChangePasswordRequest;
 import com.joao_v_marques.meaven.users.auth.dto.CurrentUserResponse;
 import com.joao_v_marques.meaven.users.auth.dto.RegisterRequest;
+import com.joao_v_marques.meaven.users.auth.dto.UpdateProfileRequest;
 import com.joao_v_marques.meaven.users.user.User;
 import com.joao_v_marques.meaven.users.user.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -37,6 +38,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -138,16 +142,48 @@ public class AuthController {
             content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     @GetMapping("/me")
     public CurrentUserResponse me(@Parameter(hidden = true) @AuthenticationPrincipal UserPrincipal principal) {
-        List<String> roles = roleHierarchy.getReachableGrantedAuthorities(principal.getAuthorities())
-                .stream()
-                .map(GrantedAuthority::getAuthority)
-                .filter(authority -> authority.startsWith(ROLE_PREFIX))
-                .map(authority -> authority.substring(ROLE_PREFIX.length()))
-                .sorted()
-                .toList();
+        return currentUserResponse(principal.getName(), principal.getUsername(), principal.getBirthDate(),
+                principal.getCreatedAt(), principal.getRoleName(), principal.getAuthorities());
+    }
 
-        return new CurrentUserResponse(principal.getName(), principal.getUsername(), principal.getBirthDate(),
-                principal.getRoleName(), roles);
+    // The logged-in user edits their own account. The JWT subject is the username,
+    // so renaming it also sends a new access_token cookie (the old token stops matching any user).
+    @Operation(
+            summary = "Alterar meus dados",
+            description = """
+                    O usuário logado altera o próprio nome, data de nascimento e usuário.
+                    Se o usuário mudar, a resposta grava um novo cookie `access_token`; quem usa o cabeçalho Bearer
+                    deve fazer login de novo com o novo usuário.""")
+    @ApiResponse(responseCode = "200", description = "Dados alterados; devolve o usuário atualizado")
+    @ApiResponse(responseCode = "400", description = "Algum campo em branco ou fora do formato",
+            content = @Content(schema = @Schema(implementation = ErrorResponse.class),
+                    examples = @ExampleObject(value = "{\"status\": 400, \"message\": \"name: Informe seu nome.\"}")))
+    @ApiResponse(responseCode = "401", description = "Não está logado, ou o token é inválido ou expirou",
+            content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+    @ApiResponse(responseCode = "422", description = "O usuário escolhido já está em uso",
+            content = @Content(schema = @Schema(implementation = ErrorResponse.class),
+                    examples = @ExampleObject(value = "{\"status\": 422, \"message\": \"Esse usuário já está em uso. Escolha outro.\"}")))
+    @PatchMapping(value = "/me", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CurrentUserResponse> updateMe(@Valid @RequestBody UpdateProfileRequest request,
+                                                        @Parameter(hidden = true) @AuthenticationPrincipal UserPrincipal principal,
+                                                        @Parameter(hidden = true) HttpServletRequest httpRequest) {
+        String previousUsername = principal.getUsername();
+        User user = userService.updateOwnProfile(principal.getId(), request);
+
+        CurrentUserResponse body = currentUserResponse(user.getName(), user.getUsername(), user.getBirthDate(),
+                user.getCreatedAt(), principal.getRoleName(), principal.getAuthorities());
+
+        if (user.getUsername().equals(previousUsername)) {
+            return ResponseEntity.ok(body);
+        }
+
+        ResponseCookie cookie = accessTokenCookie(jwtService.generateToken(user.getUsername()),
+                Duration.ofMillis(jwtService.getExpirationMillis()),
+                httpRequest.getContextPath());
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(body);
     }
 
     // The logged-in user changes their own password
@@ -187,6 +223,21 @@ public class AuthController {
         return ResponseEntity.noContent()
                 .header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .build();
+    }
+
+    // roles: every role reachable through the role hierarchy, without the ROLE_ prefix
+    private CurrentUserResponse currentUserResponse(String name, String username, LocalDate birthDate,
+                                                    OffsetDateTime createdAt, String roleName,
+                                                    Collection<? extends GrantedAuthority> authorities) {
+        List<String> roles = roleHierarchy.getReachableGrantedAuthorities(authorities)
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .filter(authority -> authority.startsWith(ROLE_PREFIX))
+                .map(authority -> authority.substring(ROLE_PREFIX.length()))
+                .sorted()
+                .toList();
+
+        return new CurrentUserResponse(name, username, birthDate, createdAt, roleName, roles);
     }
 
     private ResponseCookie accessTokenCookie(String value, Duration maxAge, String contextPath) {
