@@ -1,0 +1,448 @@
+/* ========================================
+   MEAVEN - TELA DE LOGIN
+   Estilos exclusivos desta página
+======================================== */
+
+:root {
+    --roxo: #643DA8;
+    --roxo-escuro: #4F2E8D;
+    --roxo-borda: #594779;
+    --lilas: #8875A2;
+    --lilas-claro: #E9DDF6;
+    --fundo: #FCF7FB;
+    --branco: #FFFFFF;
+    --texto: #2D1B3B;
+    --rosa: #F28EB7;
+    --amarelo: #F6C744;
+    --cinza: #77717E;
+    --erro: #b42318;
+    --erro-fundo: #fff1f0;
+    --aviso-fundo: #fff8e8;
+    --aviso-borda: #e8d49c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-page {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+/* :where() keeps specificity at zero so component classes can set weight and size */
+:where(.login-page) :where(button, input) {
+    font: inherit;
+}
+
+/* ========================================
+   ESTRUTURA
+======================================== */
+
+.login-layout {
+    display: grid;
+    grid-template-columns: minmax(360px, 5fr) 6fr;
+    min-height: 100vh;
+}
+
+/* ========================================
+   PAINEL DA MARCA
+======================================== */
+
+.brand-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 48px;
+    background: var(--roxo);
+    color: var(--branco);
+    overflow: hidden;
+}
+
+.brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--branco);
+    color: var(--roxo);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.brand-name {
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+}
+
+.brand-copy {
+    max-width: 380px;
+    margin-top: auto;
+}
+
+.brand-title {
+    font-size: 42px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+}
+
+.brand-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #E9DDF6;
+}
+
+/* ---------- Gráfico de economia ---------- */
+
+.savings-chart {
+    width: 100%;
+    max-width: 420px;
+}
+
+.savings-chart-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.chart-goal-line {
+    stroke: var(--amarelo);
+    stroke-width: 2;
+    stroke-dasharray: 6 6;
+}
+
+.chart-goal-label {
+    fill: var(--amarelo);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.chart-bar {
+    fill: #8F6CC9;
+    transform-box: fill-box;
+    transform-origin: bottom;
+}
+
+.chart-bar:nth-child(n+5) {
+    fill: #B392DE;
+}
+
+.chart-bar:nth-child(n+9) {
+    fill: var(--rosa);
+}
+
+.chart-bar-goal {
+    fill: var(--amarelo);
+}
+
+.savings-chart-caption {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #8F6CC9;
+    font-size: 12px;
+    color: #E9DDF6;
+}
+
+.brand-footer {
+    font-size: 11px;
+    color: #CDB9EA;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .chart-bar {
+        animation: grow-bar 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .chart-bar:nth-child(1)  { animation-delay: 0.10s; }
+    .chart-bar:nth-child(2)  { animation-delay: 0.16s; }
+    .chart-bar:nth-child(3)  { animation-delay: 0.22s; }
+    .chart-bar:nth-child(4)  { animation-delay: 0.28s; }
+    .chart-bar:nth-child(5)  { animation-delay: 0.34s; }
+    .chart-bar:nth-child(6)  { animation-delay: 0.40s; }
+    .chart-bar:nth-child(7)  { animation-delay: 0.46s; }
+    .chart-bar:nth-child(8)  { animation-delay: 0.52s; }
+    .chart-bar:nth-child(9)  { animation-delay: 0.58s; }
+    .chart-bar:nth-child(10) { animation-delay: 0.64s; }
+    .chart-bar:nth-child(11) { animation-delay: 0.70s; }
+    .chart-bar:nth-child(12) { animation-delay: 0.76s; }
+
+    .chart-goal-label {
+        animation: fade-in 0.4s ease 1.2s both;
+    }
+}
+
+@keyframes grow-bar {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ========================================
+   ÁREA DO FORMULÁRIO
+======================================== */
+
+.login-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-header {
+    margin-bottom: 28px;
+}
+
+.login-title {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.login-subtitle {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--cinza);
+}
+
+/* ---------- Aviso vindo do redirecionamento ---------- */
+
+.login-notice {
+    margin-bottom: 22px;
+    padding: 12px 14px;
+    border: 1px solid var(--aviso-borda);
+    border-left: 4px solid var(--amarelo);
+    border-radius: 10px;
+    background: var(--aviso-fundo);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ---------- Campos ---------- */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--roxo-borda);
+    border-radius: 10px;
+    outline: none;
+    background: #FFFCFF;
+    color: var(--texto);
+    font-size: 15px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-input:focus {
+    border-color: var(--roxo);
+    box-shadow: 0 0 0 3px #643DA826;
+}
+
+.form-input[aria-invalid="true"] {
+    border-color: var(--erro);
+}
+
+.form-input[aria-invalid="true"]:focus {
+    box-shadow: 0 0 0 3px #b4231822;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-input {
+    padding-right: 88px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    padding: 7px 12px;
+    border: none;
+    border-radius: 20px;
+    background: transparent;
+    color: var(--roxo);
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    background: var(--lilas-claro);
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid var(--roxo);
+    outline-offset: 1px;
+}
+
+.caps-lock-hint {
+    font-size: 12px;
+    color: #8a6100;
+}
+
+.field-error {
+    font-size: 12px;
+    color: var(--erro);
+}
+
+.field-error:empty {
+    display: none;
+}
+
+.form-error {
+    padding: 11px 13px;
+    border-radius: 10px;
+    background: var(--erro-fundo);
+    color: var(--erro);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.form-error:empty {
+    display: none;
+}
+
+/* ---------- Botão ---------- */
+
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 6px;
+    padding: 14px 23px;
+    border: none;
+    border-radius: 25px;
+    background: var(--roxo);
+    color: var(--branco);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-button:hover {
+    background: var(--roxo-escuro);
+}
+
+.submit-button:focus-visible {
+    outline: 3px solid var(--amarelo);
+    outline-offset: 2px;
+}
+
+.submit-button:disabled {
+    cursor: progress;
+    background: var(--lilas);
+}
+
+.submit-spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #FFFFFF66;
+    border-top-color: var(--branco);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+.submit-button.is-loading .submit-spinner {
+    display: block;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.login-help {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid #EEE8F1;
+    font-size: 12px;
+    color: var(--cinza);
+    text-align: center;
+}
+
+/* ========================================
+   RESPONSIVO
+======================================== */
+
+@media (max-width: 860px) {
+    .login-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-panel {
+        gap: 22px;
+        padding: 24px 20px 20px;
+    }
+
+    .brand-copy {
+        margin-top: 0;
+    }
+
+    .brand-title {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .brand-text {
+        font-size: 13px;
+    }
+
+    .savings-chart {
+        max-width: 180px;
+    }
+
+    .savings-chart-caption,
+    .brand-footer {
+        display: none;
+    }
+
+    .login-main {
+        align-items: flex-start;
+        padding: 32px 16px 40px;
+    }
+}
