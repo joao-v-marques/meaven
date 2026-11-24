@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEAVEN | Entrar</title>
+    <link rel="stylesheet" href="/meaven/css/login.css">
+    <script src="/meaven/js/login.js" defer></script>
+</head>
+<body class="login-page">
+
+    <div class="login-layout">
+
+        <!-- PAINEL DA MARCA -->
+        <aside class="brand-panel">
+
+            <div class="brand-mark">
+                <span class="brand-logo" aria-hidden="true">M</span>
+                <span class="brand-name">MEAVEN</span>
+            </div>
+
+            <div class="brand-copy">
+                <h1 class="brand-title">Simule antes de decidir.</h1>
+                <p class="brand-text">
+                    Carro, casa, viagem ou o primeiro negócio: veja quanto custa
+                    e quanto tempo leva antes de assumir qualquer compromisso.
+                </p>
+            </div>
+
+            <!-- Gráfico ilustrativo: 12 meses de economia até a meta -->
+            <figure class="savings-chart" aria-hidden="true">
+                <svg class="savings-chart-svg" viewBox="0 0 360 200" preserveAspectRatio="xMidYMax meet">
+                    <line class="chart-goal-line" x1="0" y1="34" x2="360" y2="34"></line>
+                    <text class="chart-goal-label" x="0" y="24">Meta da viagem</text>
+
+                    <g class="chart-bars">
+                        <rect class="chart-bar" x="4"   y="178" width="22" height="22" rx="4"></rect>
+                        <rect class="chart-bar" x="34"  y="166" width="22" height="34" rx="4"></rect>
+                        <rect class="chart-bar" x="64"  y="154" width="22" height="46" rx="4"></rect>
+                        <rect class="chart-bar" x="94"  y="141" width="22" height="59" rx="4"></rect>
+                        <rect class="chart-bar" x="124" y="128" width="22" height="72" rx="4"></rect>
+                        <rect class="chart-bar" x="154" y="115" width="22" height="85" rx="4"></rect>
+                        <rect class="chart-bar" x="184" y="102" width="22" height="98" rx="4"></rect>
+                        <rect class="chart-bar" x="214" y="89"  width="22" height="111" rx="4"></rect>
+                        <rect class="chart-bar" x="244" y="76"  width="22" height="124" rx="4"></rect>
+                        <rect class="chart-bar" x="274" y="62"  width="22" height="138" rx="4"></rect>
+                        <rect class="chart-bar" x="304" y="48"  width="22" height="152" rx="4"></rect>
+                        <rect class="chart-bar chart-bar-goal" x="334" y="34" width="22" height="166" rx="4"></rect>
+                    </g>
+                </svg>
+                <figcaption class="savings-chart-caption">12 meses guardando um pouco por mês</figcaption>
+            </figure>
+
+            <p class="brand-footer">Projeto Extracurricular de Educação Financeira</p>
+
+        </aside>
+
+        <!-- FORMULÁRIO -->
+        <main class="login-main">
+
+            <section class="login-card" aria-labelledby="login-title">
+
+                <header class="login-header">
+                    <h2 class="login-title" id="login-title">Entrar na sua conta</h2>
+                    <p class="login-subtitle">Use o usuário e a senha que você recebeu do projeto.</p>
+                </header>
+
+                <div class="login-notice" id="login-notice" role="status" hidden></div>
+
+                <form class="login-form" id="login-form" novalidate>
+
+                    <div class="form-field">
+                        <label class="form-label" for="username">Usuário</label>
+                        <input
+                            class="form-input"
+                            type="text"
+                            id="username"
+                            name="username"
+                            autocomplete="username"
+                            autocapitalize="none"
+                            spellcheck="false"
+                            aria-describedby="username-error"
+                        >
+                        <p class="field-error" id="username-error"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="password">Senha</label>
+                        <div class="password-wrapper">
+                            <input
+                                class="form-input password-input"
+                                type="password"
+                                id="password"
+                                name="password"
+                                autocomplete="current-password"
+                                aria-describedby="password-error caps-lock-hint"
+                            >
+                            <button
+                                class="password-toggle"
+                                type="button"
+                                id="password-toggle"
+                                aria-controls="password"
+                                aria-pressed="false"
+                            >Mostrar</button>
+                        </div>
+                        <p class="caps-lock-hint" id="caps-lock-hint" hidden>O Caps Lock está ativado.</p>
+                        <p class="field-error" id="password-error"></p>
+                    </div>
+
+                    <p class="form-error" id="form-error" role="alert"></p>
+
+                    <button class="submit-button" type="submit" id="submit-button">
+                        <span class="submit-spinner" aria-hidden="true"></span>
+                        <span class="submit-label" id="submit-label">Entrar</span>
+                    </button>
+
+                </form>
+
+                <p class="login-help">Não tem acesso? Fale com a coordenação do projeto.</p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
