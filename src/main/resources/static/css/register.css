@@ -1,0 +1,220 @@
+/* ========================================
+   MEAVEN - TELA DE CADASTRO
+   Layout, brand panel and form come from login.css;
+   only what is new on this screen lives here.
+======================================== */
+
+/* ---------- Passos depois do cadastro (painel roxo) ---------- */
+
+.signup-steps {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 380px;
+    list-style: none;
+    counter-reset: signup-step;
+}
+
+.signup-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 44px;
+    counter-increment: signup-step;
+}
+
+.signup-step::before {
+    content: counter(signup-step);
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #B392DE;
+    border-radius: 50%;
+    background: var(--roxo);
+    color: var(--branco);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Thin line from each marker down to the next one, like a path to the goal */
+.signup-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 25px;
+    bottom: -25px;
+    left: 13px;
+    width: 2px;
+    background: #8F6CC9;
+}
+
+/* The last step is the goal: same yellow as the logo dot and the chart on the login */
+.signup-step:last-child::before {
+    border-color: var(--amarelo);
+    background: var(--amarelo);
+    color: var(--texto);
+}
+
+.signup-step-title {
+    font-size: 15px;
+}
+
+.signup-step-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #E9DDF6;
+}
+
+/* ---------- Campos ---------- */
+
+.field-hint {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--cinza);
+}
+
+/* Date inputs ignore font: inherit in some browsers */
+.form-input[type="date"] {
+    min-height: 48px;
+    font-family: inherit;
+}
+
+/* ========================================
+   CABER EM UMA TELA
+   The sign-up has more fields than the login, so this screen is
+   tighter: paired fields, smaller gaps and a shorter brand panel.
+======================================== */
+
+.register-page .login-layout {
+    height: 100vh;
+}
+
+.register-page .brand-panel {
+    gap: 28px;
+    padding: 32px 44px;
+}
+
+.register-page .brand-title {
+    font-size: 36px;
+    margin-bottom: 14px;
+}
+
+.register-page .brand-text {
+    font-size: 14px;
+}
+
+.register-page .signup-steps {
+    gap: 18px;
+}
+
+.register-page .login-main {
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.register-page .login-card {
+    max-width: 460px;
+}
+
+.register-page .login-header {
+    margin-bottom: 18px;
+}
+
+.register-page .login-title {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.register-form {
+    gap: 12px;
+}
+
+.register-form .form-field {
+    gap: 5px;
+}
+
+.register-form .form-input {
+    padding: 10px 13px;
+    font-size: 14px;
+}
+
+.register-form .form-input[type="date"] {
+    min-height: 41px;
+}
+
+.register-form .submit-button {
+    margin-top: 4px;
+    padding: 12px 23px;
+}
+
+/* Two fields side by side; min-width: 0 lets inputs shrink inside the grid */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: start;
+}
+
+.form-row .form-field {
+    min-width: 0;
+}
+
+.register-page .login-footer {
+    margin-top: 16px;
+    padding-top: 14px;
+}
+
+.register-page .secondary-button {
+    padding: 8px 18px;
+}
+
+/* Short laptop screens: drop the decorative extras before anything scrolls */
+@media (max-height: 640px) {
+    .register-page .brand-text {
+        display: none;
+    }
+
+    .register-page .signup-step-text {
+        display: none;
+    }
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 860px) {
+    .register-page .login-layout {
+        height: auto;
+    }
+
+    .register-page .login-main {
+        overflow: visible;
+    }
+
+    .signup-steps,
+    .register-page .brand-text,
+    .register-page .brand-footer {
+        display: none;
+    }
+
+    .register-page .brand-panel {
+        gap: 14px;
+        padding: 20px;
+    }
+
+    .register-page .brand-title {
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

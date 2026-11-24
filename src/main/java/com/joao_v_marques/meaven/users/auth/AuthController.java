@@ -9,6 +9,8 @@ import com.joao_v_marques.meaven.users.auth.dto.AuthRequest;
 import com.joao_v_marques.meaven.users.auth.dto.AuthResponse;
 import com.joao_v_marques.meaven.users.auth.dto.ChangePasswordRequest;
 import com.joao_v_marques.meaven.users.auth.dto.CurrentUserResponse;
+import com.joao_v_marques.meaven.users.auth.dto.RegisterRequest;
+import com.joao_v_marques.meaven.users.user.User;
 import com.joao_v_marques.meaven.users.user.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -23,6 +25,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
@@ -87,6 +90,39 @@ public class AuthController {
                 httpRequest.getContextPath());
 
         return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(new AuthResponse(token));
+    }
+
+    // Self sign-up: creates the account and already logs the person in (same cookie as /login)
+    @Operation(
+            summary = "Criar conta",
+            description = """
+                    Cria uma conta com o perfil `USER` e já faz o login: devolve o JWT e grava o cookie `access_token`,
+                    igual ao `POST /api/auth/login`.
+                    O usuário não pode repetir um que já existe, nem trocando maiúsculas por minúsculas.""")
+    @SecurityRequirements
+    @ApiResponse(responseCode = "201", description = "Conta criada e login feito",
+            headers = @Header(name = HttpHeaders.SET_COOKIE, description = "access_token=<jwt>; HttpOnly; SameSite=Lax",
+                    schema = @Schema(type = "string")))
+    @ApiResponse(responseCode = "400", description = "Algum campo em branco ou fora do formato",
+            content = @Content(schema = @Schema(implementation = ErrorResponse.class),
+                    examples = @ExampleObject(value = "{\"status\": 400, \"message\": \"password: A senha deve ter entre 4 e 72 caracteres.\"}")))
+    @ApiResponse(responseCode = "422", description = "O usuário escolhido já está em uso",
+            content = @Content(schema = @Schema(implementation = ErrorResponse.class),
+                    examples = @ExampleObject(value = "{\"status\": 422, \"message\": \"Esse usuário já está em uso. Escolha outro.\"}")))
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request,
+                                                 @Parameter(hidden = true) HttpServletRequest httpRequest) {
+        User user = userService.register(request);
+
+        String token = jwtService.generateToken(user.getUsername());
+
+        ResponseCookie cookie = accessTokenCookie(token,
+                Duration.ofMillis(jwtService.getExpirationMillis()),
+                httpRequest.getContextPath());
+
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(new AuthResponse(token));
     }

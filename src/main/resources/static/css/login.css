@@ -63,29 +63,32 @@
     overflow: hidden;
 }
 
+/* ---------- Marca: mesmo wordmark do menu lateral (style.css) ---------- */
+
 .brand-mark {
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 
-.brand-logo {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: var(--branco);
-    color: var(--roxo);
-    font-size: 20px;
-    font-weight: bold;
+.brand-wordmark {
+    display: block;
+    width: 132px;
+    height: auto;
+    overflow: visible;
 }
 
-.brand-name {
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 0.12em;
+/* currentColor = the panel's white text */
+.brand-letters {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* The "A" is a peak with no crossbar: the yellow dot is the goal on top */
+.brand-goal {
+    fill: var(--amarelo);
 }
 
 .brand-copy {
@@ -396,13 +399,42 @@
     to { transform: rotate(360deg); }
 }
 
-.login-help {
+/* ---------- Rodapé do cartão: troca entre entrar e criar conta ---------- */
+
+.login-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
     margin-top: 26px;
     padding-top: 18px;
     border-top: 1px solid #EEE8F1;
-    font-size: 12px;
+}
+
+.login-footer-text {
+    font-size: 13px;
     color: var(--cinza);
-    text-align: center;
+}
+
+.secondary-button {
+    flex-shrink: 0;
+    padding: 10px 20px;
+    border: 1px solid var(--roxo);
+    border-radius: 25px;
+    color: var(--roxo);
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.secondary-button:hover {
+    background: var(--lilas-claro);
+}
+
+.secondary-button:focus-visible {
+    outline: 3px solid var(--amarelo);
+    outline-offset: 2px;
 }
 
 /* ========================================
