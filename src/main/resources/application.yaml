@@ -9,6 +9,20 @@ app:
   security:
     cookie-secure: ${COOKIE_SECURE:false}
 
+# API documentation (OpenApiConfig): Swagger UI at /meaven/swagger-ui.html
+springdoc:
+  api-docs:
+    enabled: ${SWAGGER_ENABLED:true}
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLED:true}
+    persist-authorization: true
+    tags-sorter: alpha
+    operations-sorter: method
+  paths-to-match: /api/**
+  default-produces-media-type: application/json
+  # Each endpoint declares its own @ApiResponse; don't copy every GlobalExceptionHandler status into all of them
+  override-with-generic-response: false
+
 spring:
   config:
     import: optional:file:.env[.properties]
