@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -29,6 +30,10 @@ public class UserPrincipal implements UserDetails {
 
     public LocalDate getBirthDate() {
         return user.getBirthDate();
+    }
+
+    public OffsetDateTime getCreatedAt() {
+        return user.getCreatedAt();
     }
 
     public String getRoleName() {

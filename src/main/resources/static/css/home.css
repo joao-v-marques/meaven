@@ -1,0 +1,487 @@
+/* ========================================
+   MEAVEN - PÁGINA INICIAL
+   Layout and sidebar come from style.css.
+   The one bold element is the savings demo in the hero;
+   everything around it stays quiet.
+======================================== */
+
+.main-content.home {
+    --tinta-suave: #5A4A68;
+    --linha: #EAE1F2;
+    --lilas-fundo: #F3ECFA;
+
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+    max-width: 1160px;
+    padding: 56px 56px 72px;
+}
+
+/* :where() keeps the focus ring from outranking component styles */
+:where(.home) :where(a, input):focus-visible {
+    outline: 2px solid var(--roxo);
+    outline-offset: 3px;
+}
+
+/* ========================================
+   APRESENTAÇÃO
+======================================== */
+
+.home-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    align-items: center;
+    gap: 56px;
+}
+
+.home-greeting {
+    margin-bottom: 14px;
+    font-size: 16px;
+    color: var(--tinta-suave);
+}
+
+.home-title {
+    max-width: 11ch;
+    font-size: 56px;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--texto);
+}
+
+.home-lead {
+    max-width: 50ch;
+    margin-top: 22px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--tinta-suave);
+}
+
+.home-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.home-button {
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.home-button-primary {
+    background: var(--roxo);
+    color: var(--branco);
+}
+
+.home-button-primary:hover {
+    background: #4F2E8D;
+}
+
+.home-button-secondary {
+    border: 1px solid var(--roxo);
+    color: var(--roxo);
+}
+
+.home-button-secondary:hover {
+    background: var(--lilas-fundo);
+}
+
+/* ---------- Mini simulação (mesma linguagem do painel do login) ---------- */
+
+.savings-demo {
+    padding: 28px;
+    border-radius: 24px;
+    background: var(--roxo);
+    color: var(--branco);
+}
+
+.savings-demo-title {
+    font-size: 19px;
+    letter-spacing: -0.01em;
+}
+
+.savings-demo-control {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: 22px;
+}
+
+.savings-demo-label {
+    font-size: 13px;
+    color: #E9DDF6;
+}
+
+.savings-demo-value {
+    font-size: 22px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+.savings-demo-range {
+    width: 100%;
+    margin-top: 10px;
+    accent-color: var(--amarelo);
+    cursor: pointer;
+}
+
+.savings-demo-range:focus-visible {
+    outline-color: var(--amarelo);
+}
+
+/* Bar height comes from --fill (0-1), set by home.js */
+.savings-chart {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: end;
+    gap: 6px;
+    height: 120px;
+    margin-top: 22px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #8F6CC9;
+}
+
+.savings-bar {
+    --fill: 0.05;
+
+    height: calc(var(--fill) * 100%);
+    min-height: 4px;
+    border-radius: 4px 4px 2px 2px;
+    background: #B392DE;
+    transition: height 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.savings-bar:last-child {
+    background: var(--amarelo);
+}
+
+.savings-demo-result {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.savings-demo-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.savings-demo-row dt {
+    font-size: 12px;
+    color: #E9DDF6;
+}
+
+.savings-demo-row dd {
+    font-size: 20px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+.savings-demo-row:last-child dd {
+    color: var(--amarelo);
+}
+
+.savings-demo-note {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #CDB9EA;
+}
+
+/* ========================================
+   SOBRE O PROJETO
+======================================== */
+
+.home-about {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--linha);
+}
+
+.home-section-title {
+    font-size: 26px;
+    letter-spacing: -0.02em;
+}
+
+.home-about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 62ch;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--tinta-suave);
+}
+
+/* ========================================
+   APRENDIZADO FINANCEIRO
+======================================== */
+
+.home-learning {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home-learning-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.home-section-text {
+    font-size: 15px;
+    color: var(--tinta-suave);
+}
+
+.learning-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 28px;
+    border: 1px solid var(--linha);
+    border-radius: 20px;
+    background: var(--branco);
+}
+
+.learning-panel-title {
+    font-size: 19px;
+}
+
+.learning-panel-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--tinta-suave);
+}
+
+.learning-panel-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 4px;
+    fill: none;
+    stroke: var(--roxo);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.learning-panel-link {
+    margin-top: auto;
+    padding-top: 8px;
+    color: var(--roxo);
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #643DA855;
+    text-underline-offset: 4px;
+}
+
+.learning-panel-link:hover {
+    text-decoration-color: var(--roxo);
+}
+
+/* ---------- Simulações: o painel principal ---------- */
+
+.learning-panel-simulations {
+    gap: 22px;
+    border: none;
+    background: var(--lilas-fundo);
+}
+
+.learning-panel-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+}
+
+.learning-panel-header .learning-panel-title {
+    margin-bottom: 6px;
+}
+
+.learning-panel-header .learning-panel-link {
+    flex-shrink: 0;
+    padding-top: 0;
+}
+
+.scenario-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    list-style: none;
+}
+
+.scenario-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: var(--branco);
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+}
+
+.scenario-link:hover {
+    border-color: var(--roxo);
+}
+
+.scenario-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    padding: 7px;
+    border-radius: 10px;
+    background: var(--lilas-fundo);
+    fill: none;
+    stroke: var(--roxo);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ---------- Conceitos e investimentos ---------- */
+
+.learning-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.topic-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 16px;
+    width: 100%;
+    margin: 8px 0 6px;
+    list-style: none;
+}
+
+.topic {
+    position: relative;
+    padding-left: 14px;
+    font-size: 13.5px;
+    line-height: 1.4;
+}
+
+.topic::before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--lilas);
+}
+
+/* ========================================
+   RESPONSIVO
+======================================== */
+
+@media (max-width: 1100px) {
+
+    .main-content.home {
+        gap: 56px;
+        padding: 40px 32px 56px;
+    }
+
+    .home-hero {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .home-title {
+        font-size: 48px;
+    }
+
+    .savings-demo {
+        max-width: 560px;
+    }
+
+    .scenario-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 760px) {
+
+    .home-about,
+    .learning-pair {
+        grid-template-columns: 1fr;
+    }
+
+    .home-about {
+        gap: 14px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .main-content.home {
+        gap: 44px;
+        padding: 28px 16px 44px;
+    }
+
+    .home-title {
+        font-size: 38px;
+    }
+
+    .home-lead {
+        font-size: 16px;
+    }
+
+    .home-button {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .savings-demo,
+    .learning-panel {
+        padding: 22px;
+    }
+
+    .savings-chart {
+        height: 100px;
+        gap: 4px;
+    }
+
+    .learning-panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .scenario-list,
+    .topic-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .savings-bar,
+    .home-button,
+    .scenario-link {
+        transition: none;
+    }
+
+}

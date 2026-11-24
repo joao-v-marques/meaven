@@ -4,6 +4,7 @@ import com.joao_v_marques.meaven.shared.exceptions.BusinessException;
 import com.joao_v_marques.meaven.shared.exceptions.NotFoundException;
 import com.joao_v_marques.meaven.users.auth.dto.ChangePasswordRequest;
 import com.joao_v_marques.meaven.users.auth.dto.RegisterRequest;
+import com.joao_v_marques.meaven.users.auth.dto.UpdateProfileRequest;
 import com.joao_v_marques.meaven.users.role.Role;
 import com.joao_v_marques.meaven.users.role.RoleRepository;
 import lombok.RequiredArgsConstructor;
@@ -42,6 +43,25 @@ public class UserService {
         user.setRole(role);
 
         return userRepository.save(user);
+    }
+
+    // The logged-in user edits their own name, birth date and username (/settings)
+    @Transactional
+    public User updateOwnProfile(Integer userId, UpdateProfileRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NotFoundException("Não foi encontrado nenhum usuário com o ID fornecido."));
+
+        String username = request.username().trim();
+
+        if (userRepository.existsByUsernameIgnoreCaseAndIdNot(username, userId)) {
+            throw new BusinessException("Esse usuário já está em uso. Escolha outro.");
+        }
+
+        user.setName(request.name().trim());
+        user.setBirthDate(request.birthDate());
+        user.setUsername(username);
+
+        return user;
     }
 
     // The logged-in user changes their own password (requires the current one)

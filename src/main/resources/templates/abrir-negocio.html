@@ -47,18 +47,16 @@
             </nav>
 
             <section class="account" aria-label="Sua conta">
-                <div class="account-user">
+                <a class="account-user" id="account-settings-link" href="/meaven/settings" title="Configurações da conta">
                     <span class="account-avatar" id="sidebar-avatar" aria-hidden="true"></span>
                     <div class="account-text">
                         <strong class="account-name" id="sidebar-user-name"></strong>
                         <span class="account-role" id="sidebar-user-role"></span>
                     </div>
-                </div>
+                    <svg class="account-settings-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span class="visually-hidden">Configurações da conta</span>
+                </a>
                 <div class="account-actions">
-                    <button type="button" class="account-action" id="change-password-button" aria-haspopup="dialog">
-                        <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3M16.5 6.5l3 3M14 9l2 2"/></svg>
-                        <span>Alterar senha</span>
-                    </button>
                     <button type="button" class="account-action account-action-logout" id="logout-button">
                         <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3M14 16l4-4-4-4M18 12H9"/></svg>
                         <span>Sair</span>
@@ -513,55 +511,6 @@
             </main>
 
         </div>
-
-    <!-- ALTERAR SENHA -->
-    <dialog class="password-dialog" id="password-dialog" aria-labelledby="password-dialog-title" aria-describedby="password-dialog-text">
-        <form class="password-form" id="password-form" novalidate>
-
-            <header class="dialog-header">
-                <h2 class="dialog-title" id="password-dialog-title">Alterar senha</h2>
-                <p class="dialog-text" id="password-dialog-text">Confirme a senha atual e escolha uma nova.</p>
-                <button type="button" class="dialog-close" id="password-dialog-close" aria-label="Fechar">
-                    <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-                </button>
-            </header>
-
-            <div class="dialog-field">
-                <label class="dialog-label" for="current-password">Senha atual</label>
-                <input class="dialog-input" type="password" id="current-password" name="currentPassword"
-                       autocomplete="current-password" maxlength="72" aria-describedby="current-password-error">
-                <p class="dialog-error" id="current-password-error"></p>
-            </div>
-
-            <div class="dialog-field">
-                <label class="dialog-label" for="new-password">Nova senha</label>
-                <input class="dialog-input" type="password" id="new-password" name="newPassword"
-                       autocomplete="new-password" maxlength="72" aria-describedby="new-password-error new-password-hint">
-                <p class="dialog-hint" id="new-password-hint">De 4 a 72 caracteres, diferente da atual.</p>
-                <p class="dialog-error" id="new-password-error"></p>
-            </div>
-
-            <div class="dialog-field">
-                <label class="dialog-label" for="confirm-password">Repita a nova senha</label>
-                <input class="dialog-input" type="password" id="confirm-password" name="confirmPassword"
-                       autocomplete="new-password" maxlength="72" aria-describedby="confirm-password-error">
-                <p class="dialog-error" id="confirm-password-error"></p>
-            </div>
-
-            <label class="dialog-toggle">
-                <input type="checkbox" id="show-passwords">
-                <span>Mostrar senhas</span>
-            </label>
-
-            <p class="dialog-form-error" id="password-form-error" role="alert"></p>
-
-            <div class="dialog-actions">
-                <button type="button" class="dialog-button dialog-button-secondary" id="password-dialog-cancel">Cancelar</button>
-                <button type="submit" class="dialog-button dialog-button-primary" id="password-submit">Salvar nova senha</button>
-            </div>
-
-        </form>
-    </dialog>
 
     <p class="toast" id="app-toast" role="status" hidden></p>
 

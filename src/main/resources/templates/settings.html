@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MEAVEN | Configurações da conta</title>
+
+    <link rel="stylesheet" href="/meaven/css/style.css">
+    <link rel="stylesheet" href="/meaven/css/settings.css">
+    <script src="/meaven/js/sidebar.js" defer></script>
+    <script src="/meaven/js/settings.js" defer></script>
+</head>
+<body>
+
+    <div class="layout">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <a href="/meaven/" class="brand" aria-label="MEAVEN, ir para o início">
+                <svg class="brand-wordmark" viewBox="-3 -11 135 40" aria-hidden="true">
+                    <path class="brand-letters" d="M0 24V0l9 14 9-14v24M37 0H24v24h13M24 12h10M43 24 52 0l9 24M67 0l9 24 9-24M104 0H91v24h13M91 12h10M110 24V0l18 24V0"/>
+                    <circle class="brand-goal" cx="52" cy="-7" r="3"/>
+                </svg>
+                <span class="brand-tagline">Educação financeira</span>
+            </a>
+
+            <nav class="menu" aria-label="Menu principal">
+                <a href="/meaven/" class="menu-item">
+                    <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>
+                    <span>Início</span>
+                </a>
+                <a href="/meaven/simulations" class="menu-item">
+                    <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></svg>
+                    <span>Simulações</span>
+                </a>
+                <a href="/meaven/concepts" class="menu-item">
+                    <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.5 5 8 4.5 4 4.5v14c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-14c-4 0-6.5.5-8 2zM12 6.5v14"/></svg>
+                    <span>Conceitos</span>
+                </a>
+                <a href="/meaven/investments" class="menu-item">
+                    <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>
+                    <span>Investimentos</span>
+                </a>
+            </nav>
+
+            <section class="account" aria-label="Sua conta">
+                <a class="account-user" id="account-settings-link" href="/meaven/settings" title="Configurações da conta" aria-current="page">
+                    <span class="account-avatar" id="sidebar-avatar" aria-hidden="true"></span>
+                    <div class="account-text">
+                        <strong class="account-name" id="sidebar-user-name"></strong>
+                        <span class="account-role" id="sidebar-user-role"></span>
+                    </div>
+                    <svg class="account-settings-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span class="visually-hidden">Configurações da conta</span>
+                </a>
+                <div class="account-actions">
+                    <button type="button" class="account-action account-action-logout" id="logout-button">
+                        <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3M14 16l4-4-4-4M18 12H9"/></svg>
+                        <span>Sair</span>
+                    </button>
+                </div>
+            </section>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content settings">
+
+            <header class="settings-header">
+                <h1 class="settings-title">Configurações da conta</h1>
+                <p class="settings-subtitle">Seus dados de acesso ao MEAVEN. Só você vê esta página.</p>
+            </header>
+
+            <!-- IDENTIDADE: preenchida com o usuário logado (settings.js) -->
+            <section class="identity" aria-label="Sua conta">
+                <span class="identity-avatar" id="identity-avatar" aria-hidden="true"></span>
+                <div class="identity-text">
+                    <p class="identity-name" id="identity-name"></p>
+                    <p class="identity-username" id="identity-username"></p>
+                </div>
+                <dl class="identity-facts">
+                    <div class="identity-fact">
+                        <dt>Perfil</dt>
+                        <dd id="identity-role">-</dd>
+                    </div>
+                    <div class="identity-fact">
+                        <dt>Idade</dt>
+                        <dd id="identity-age">-</dd>
+                    </div>
+                    <div class="identity-fact">
+                        <dt>Conta criada em</dt>
+                        <dd id="identity-since">-</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <!-- INFORMAÇÕES DA CONTA -->
+            <section class="settings-section" aria-labelledby="profile-title">
+
+                <div class="settings-section-intro">
+                    <h2 class="settings-section-title" id="profile-title">Informações da conta</h2>
+                    <p class="settings-section-text">Seu nome aparece no menu e na página inicial. O usuário é o que você digita para entrar.</p>
+                </div>
+
+                <form class="settings-form" id="profile-form" novalidate>
+                    <fieldset class="settings-fieldset" id="profile-fieldset" disabled>
+
+                        <div class="settings-field">
+                            <label class="settings-label" for="profile-name">Nome completo</label>
+                            <input class="settings-input" id="profile-name" type="text" name="name" maxlength="100" autocomplete="name" aria-describedby="profile-name-error">
+                            <p class="settings-error" id="profile-name-error"></p>
+                        </div>
+
+                        <div class="settings-row">
+                        <div class="settings-field">
+                            <label class="settings-label" for="profile-birth-date">Data de nascimento</label>
+                            <input class="settings-input" id="profile-birth-date" type="date" name="birthDate" min="1900-01-01" autocomplete="bday" aria-describedby="profile-birth-date-error">
+                            <p class="settings-error" id="profile-birth-date-error"></p>
+                        </div>
+
+                        <div class="settings-field">
+                            <label class="settings-label" for="profile-username">Usuário</label>
+                            <input class="settings-input" id="profile-username" type="text" name="username" maxlength="30" autocomplete="username" autocapitalize="none" spellcheck="false" aria-describedby="profile-username-hint profile-username-error">
+                            <p class="settings-hint" id="profile-username-hint">Letras, números, ponto, hífen ou _</p>
+                            <p class="settings-error" id="profile-username-error"></p>
+                        </div>
+                        </div>
+
+                        <p class="settings-form-error" id="profile-form-error" role="alert"></p>
+
+                        <div class="settings-actions">
+                            <button class="settings-button settings-button-secondary" type="button" id="profile-undo" disabled>Desfazer alterações</button>
+                            <button class="settings-button settings-button-primary" type="submit" id="profile-submit" disabled>Salvar alterações</button>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+            </section>
+
+            <!-- SENHA -->
+            <section class="settings-section" aria-labelledby="password-title">
+
+                <div class="settings-section-intro">
+                    <h2 class="settings-section-title" id="password-title">Senha</h2>
+                    <p class="settings-section-text">Para trocar, confirme a senha atual. A nova precisa ter de 4 a 72 caracteres e ser diferente da atual.</p>
+                </div>
+
+                <form class="settings-form" id="password-form" novalidate>
+
+                        <div class="settings-field">
+                            <label class="settings-label" for="current-password">Senha atual</label>
+                            <input class="settings-input" id="current-password" type="password" name="currentPassword" maxlength="72" autocomplete="current-password" aria-describedby="current-password-error">
+                            <p class="settings-error" id="current-password-error"></p>
+                        </div>
+
+                    <div class="settings-row">
+                        <div class="settings-field">
+                            <label class="settings-label" for="new-password">Nova senha</label>
+                            <input class="settings-input" id="new-password" type="password" name="newPassword" maxlength="72" autocomplete="new-password" aria-describedby="new-password-error">
+                            <p class="settings-error" id="new-password-error"></p>
+                        </div>
+
+                        <div class="settings-field">
+                            <label class="settings-label" for="confirm-password">Repita a nova senha</label>
+                            <input class="settings-input" id="confirm-password" type="password" name="confirmPassword" maxlength="72" autocomplete="new-password" aria-describedby="confirm-password-error">
+                            <p class="settings-error" id="confirm-password-error"></p>
+                        </div>
+                    </div>
+
+                    <label class="settings-toggle">
+                        <input type="checkbox" id="show-passwords">
+                        <span>Mostrar senhas</span>
+                    </label>
+
+                    <p class="settings-form-error" id="password-form-error" role="alert"></p>
+
+                    <div class="settings-actions">
+                        <button class="settings-button settings-button-primary" type="submit" id="password-submit">Alterar senha</button>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- SESSÃO -->
+            <section class="settings-section" aria-labelledby="session-title">
+
+                <div class="settings-section-intro">
+                    <h2 class="settings-section-title" id="session-title">Sessão</h2>
+                    <p class="settings-section-text">Você está conectado neste navegador.</p>
+                </div>
+
+                <div class="settings-session">
+                    <p class="settings-session-text">Ao sair, você volta para a tela de login e precisa digitar usuário e senha de novo.</p>
+                    <button class="settings-button settings-button-danger" type="button" id="settings-logout">Sair da conta</button>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <p class="toast" id="app-toast" role="status" hidden></p>
+
+</body>
+</html>

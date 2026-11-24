@@ -7,8 +7,9 @@
     <title>MEAVEN | Educação Financeira</title>
 
     <link rel="stylesheet" href="/meaven/css/style.css">
+    <link rel="stylesheet" href="/meaven/css/home.css">
     <script src="/meaven/js/sidebar.js" defer></script>
-    <script src="/meaven/js/script.js" defer></script>
+    <script src="/meaven/js/home.js" defer></script>
 </head>
 <body>
 
@@ -45,18 +46,16 @@
             </nav>
 
             <section class="account" aria-label="Sua conta">
-                <div class="account-user">
+                <a class="account-user" id="account-settings-link" href="/meaven/settings" title="Configurações da conta">
                     <span class="account-avatar" id="sidebar-avatar" aria-hidden="true"></span>
                     <div class="account-text">
                         <strong class="account-name" id="sidebar-user-name"></strong>
                         <span class="account-role" id="sidebar-user-role"></span>
                     </div>
-                </div>
+                    <svg class="account-settings-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span class="visually-hidden">Configurações da conta</span>
+                </a>
                 <div class="account-actions">
-                    <button type="button" class="account-action" id="change-password-button" aria-haspopup="dialog">
-                        <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3M16.5 6.5l3 3M14 9l2 2"/></svg>
-                        <span>Alterar senha</span>
-                    </button>
                     <button type="button" class="account-action account-action-logout" id="logout-button">
                         <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3M14 16l4-4-4-4M18 12H9"/></svg>
                         <span>Sair</span>
@@ -67,138 +66,174 @@
         </aside>
 
         <!-- CONTEÚDO PRINCIPAL -->
-        <main class="main-content">
+        <main class="main-content home">
 
-            <!-- CABEÇALHO: preenchido com o usuário logado (script.js) -->
-            <header class="header">
+            <!-- APRESENTAÇÃO -->
+            <section class="home-hero" aria-labelledby="home-title">
 
-                <div class="user-info">
+                <div class="home-intro">
+                    <p class="home-greeting" id="home-greeting">Olá!</p>
+                    <h1 class="home-title" id="home-title">Simule antes de decidir.</h1>
+                    <p class="home-lead">
+                        O MEAVEN é um projeto de educação financeira. Aqui você testa decisões
+                        como comprar um carro, quitar uma dívida ou abrir um negócio, e vê quanto
+                        custam e quanto tempo levam antes de assumir qualquer compromisso.
+                    </p>
+                    <div class="home-actions">
+                        <a class="home-button home-button-primary" href="/meaven/simulations">Escolher uma simulação</a>
+                        <a class="home-button home-button-secondary" href="/meaven/concepts">Aprender os conceitos</a>
+                    </div>
+                </div>
 
-                    <div class="avatar-small" id="headerAvatar" aria-hidden="true"></div>
+                <!-- Mini simulação: mostra na prática o que o projeto faz (home.js) -->
+                <section class="savings-demo" aria-labelledby="savings-demo-title">
 
-                    <div class="user-details">
-                        <strong id="headerName">Carregando...</strong>
-                        <span id="headerAge"></span>
+                    <h2 class="savings-demo-title" id="savings-demo-title">Quanto você junta em um ano?</h2>
+
+                    <div class="savings-demo-control">
+                        <label class="savings-demo-label" for="monthly-saving">Guardando por mês</label>
+                        <output class="savings-demo-value" id="monthly-saving-value" for="monthly-saving">R$ 300</output>
+                    </div>
+                    <input class="savings-demo-range" type="range" id="monthly-saving"
+                           min="50" max="1000" step="50" value="300">
+
+                    <!-- 12 meses; o último é a meta (amarelo, como o ponto da logo) -->
+                    <div class="savings-chart" id="savings-chart" aria-hidden="true">
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
+                        <span class="savings-bar"></span>
                     </div>
 
+                    <dl class="savings-demo-result" aria-live="polite">
+                        <div class="savings-demo-row">
+                            <dt>Só guardando</dt>
+                            <dd id="saved-total">R$ 3.600</dd>
+                        </div>
+                        <div class="savings-demo-row">
+                            <dt>Rendendo 0,8% ao mês</dt>
+                            <dd id="invested-total">R$ 3.762</dd>
+                        </div>
+                    </dl>
+
+                    <p class="savings-demo-note">Exemplo com rendimento fixo, só para ilustrar. Nas simulações você usa os seus números.</p>
+
+                </section>
+
+            </section>
+
+            <!-- SOBRE O PROJETO -->
+            <section class="home-about" aria-labelledby="about-title">
+                <h2 class="home-section-title" id="about-title">Sobre o projeto</h2>
+                <div class="home-about-text">
+                    <p>
+                        O MEAVEN nasceu como um projeto extracurricular para ensinar educação
+                        financeira na prática. Em vez de decorar fórmulas, você muda os números
+                        e vê na hora o que acontece com o seu dinheiro.
+                    </p>
+                    <p>
+                        Tudo aqui é simulação: nenhum valor é cobrado, investido ou guardado.
+                        Os resultados são estimativas para ajudar você a pensar, não
+                        recomendações de investimento.
+                    </p>
                 </div>
-
-                <div class="header-info">
-                    <span id="headerCapital">Capital não informado</span>
-                    <span id="headerLevel">Nível não informado</span>
-                </div>
-
-            </header>
-
-            <!-- PERFIL FINANCEIRO -->
-            <form class="profile-card" id="profileForm" novalidate>
-
-                <div class="profile-top">
-
-                    <div class="avatar" id="profileAvatar" aria-hidden="true"></div>
-
-                    <div class="field">
-                        <label for="participantName">Nome do participante</label>
-                        <input type="text" id="participantName" name="name" autocomplete="name">
-                    </div>
-
-                    <div class="field">
-                        <label for="participantAge">Idade</label>
-                        <input type="number" id="participantAge" name="age" min="1" max="120" step="1"
-                               inputmode="numeric" placeholder="Ex.: 24">
-                    </div>
-
-                </div>
-
-                <div class="field capital-field">
-                    <label for="participantCapital">Capital inicial / Carteira atual (R$)</label>
-                    <input type="number" id="participantCapital" name="capital" min="0" step="0.01"
-                           inputmode="decimal" placeholder="Ex.: 1500,00">
-                </div>
-
-                <div class="knowledge">
-
-                    <p class="knowledge-title">Nível de conhecimento financeiro</p>
-
-                    <div class="knowledge-options">
-
-                        <label class="knowledge-option">
-                            <input type="radio" name="nivel" value="iniciante">
-                            <strong>Iniciante</strong>
-                            <small>Aprendendo o básico e primeiros passos.</small>
-                        </label>
-
-                        <label class="knowledge-option">
-                            <input type="radio" name="nivel" value="intermediario">
-                            <strong>Intermediário</strong>
-                            <small>Já poupo, controlo gastos e tenho reserva.</small>
-                        </label>
-
-                        <label class="knowledge-option">
-                            <input type="radio" name="nivel" value="avancado">
-                            <strong>Avançado</strong>
-                            <small>Invisto e planejo meus gastos e investimentos.</small>
-                        </label>
-
-                    </div>
-
-                </div>
-
-                <div class="profile-actions">
-                    <button class="cancel-button" type="reset">Cancelar</button>
-                    <button class="save-button" id="saveProfile" type="submit">Salvar perfil</button>
-                </div>
-
-            </form>
+            </section>
 
             <!-- APRENDIZADO FINANCEIRO -->
-            <section class="learning-section">
+            <section class="home-learning" aria-labelledby="learning-title">
 
-                <div class="learning-heading">
+                <header class="home-learning-header">
+                    <h2 class="home-section-title" id="learning-title">Aprendizado financeiro</h2>
+                    <p class="home-section-text">Escolha por onde começar. Tudo também está no menu lateral.</p>
+                </header>
 
-                    <div>
-
-                        <h1>Aprendizado financeiro</h1>
-
-                        <p>
-                            Explore nossos conteúdos e dê o próximo passo
-                            rumo à sua independência financeira.
-                        </p>
-
+                <section class="learning-panel learning-panel-simulations" aria-labelledby="simulations-title">
+                    <div class="learning-panel-header">
+                        <div>
+                            <h3 class="learning-panel-title" id="simulations-title">Simulações</h3>
+                            <p class="learning-panel-text">Escolha um cenário e veja como a decisão afeta o seu dinheiro.</p>
+                        </div>
+                        <a class="learning-panel-link" href="/meaven/simulations">Ver todas as simulações</a>
                     </div>
+                    <ul class="scenario-list">
+                        <li>
+                            <a class="scenario-link" href="/meaven/simulations/house">
+                                <svg class="scenario-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7M5 10v10h14V10M10 20v-5h4v5"/></svg>
+                                <span>Comprar uma casa</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="scenario-link" href="/meaven/simulations/car">
+                                <svg class="scenario-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l2-5h14l2 5v4H3zM3 13h18"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>
+                                <span>Comprar um carro</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="scenario-link" href="/meaven/simulations/travel">
+                                <svg class="scenario-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V4h6v3M4 12h16"/></svg>
+                                <span>Fazer uma viagem</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="scenario-link" href="/meaven/simulations/loan">
+                                <svg class="scenario-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6.5 9.5v5M17.5 9.5v5"/></svg>
+                                <span>Pegar um empréstimo</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="scenario-link" href="/meaven/simulations/debt">
+                                <svg class="scenario-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+                                <span>Quitar uma dívida</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="scenario-link" href="/meaven/simulations/business">
+                                <svg class="scenario-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16l-1.5-4h-13zM5 9v11h14V9M9 20v-6h6v6"/></svg>
+                                <span>Abrir um negócio</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
 
-                    <div class="piggy-placeholder">
-                        🐷
-                    </div>
+                <div class="learning-pair">
 
-                </div>
+                    <section class="learning-panel" aria-labelledby="concepts-title">
+                        <svg class="learning-panel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.5 5 8 4.5 4 4.5v14c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-14c-4 0-6.5.5-8 2zM12 6.5v14"/></svg>
+                        <h3 class="learning-panel-title" id="concepts-title">Conceitos</h3>
+                        <p class="learning-panel-text">Textos curtos para entender como o dinheiro funciona.</p>
+                        <ul class="topic-list">
+                            <li class="topic">Educação financeira</li>
+                            <li class="topic">Planejamento financeiro</li>
+                            <li class="topic">Renda fixa</li>
+                            <li class="topic">Renda variável</li>
+                            <li class="topic">Conceitos de investimentos</li>
+                            <li class="topic">Riscos e diversificação</li>
+                        </ul>
+                        <a class="learning-panel-link" href="/meaven/concepts">Abrir conceitos</a>
+                    </section>
 
-                <!-- CARDS -->
-                <div class="cards">
-
-                    <a href="/meaven/simulations" class="learning-card">
-
-                        <span>🧮</span>
-
-                        <strong>Simule suas decisões</strong>
-
-                    </a>
-
-                    <a href="/meaven/concepts" class="learning-card">
-
-                        <span>🎓</span>
-
-                        <strong>Aprenda conceitos</strong>
-
-                    </a>
-
-                    <a href="/meaven/investments" class="learning-card">
-
-                        <span>📈</span>
-
-                        <strong>Tipos de investimentos</strong>
-
-                    </a>
+                    <section class="learning-panel" aria-labelledby="investments-title">
+                        <svg class="learning-panel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>
+                        <h3 class="learning-panel-title" id="investments-title">Investimentos</h3>
+                        <p class="learning-panel-text">Conheça os tipos, simule o rendimento e compare dois cenários.</p>
+                        <ul class="topic-list">
+                            <li class="topic">CDB</li>
+                            <li class="topic">Tesouro Direto</li>
+                            <li class="topic">LCI e LCA</li>
+                            <li class="topic">Ações</li>
+                            <li class="topic">Fundos imobiliários</li>
+                            <li class="topic">ETFs</li>
+                        </ul>
+                        <a class="learning-panel-link" href="/meaven/investments">Abrir investimentos</a>
+                    </section>
 
                 </div>
 
@@ -207,55 +242,6 @@
         </main>
 
     </div>
-
-    <!-- ALTERAR SENHA -->
-    <dialog class="password-dialog" id="password-dialog" aria-labelledby="password-dialog-title" aria-describedby="password-dialog-text">
-        <form class="password-form" id="password-form" novalidate>
-
-            <header class="dialog-header">
-                <h2 class="dialog-title" id="password-dialog-title">Alterar senha</h2>
-                <p class="dialog-text" id="password-dialog-text">Confirme a senha atual e escolha uma nova.</p>
-                <button type="button" class="dialog-close" id="password-dialog-close" aria-label="Fechar">
-                    <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-                </button>
-            </header>
-
-            <div class="dialog-field">
-                <label class="dialog-label" for="current-password">Senha atual</label>
-                <input class="dialog-input" type="password" id="current-password" name="currentPassword"
-                       autocomplete="current-password" maxlength="72" aria-describedby="current-password-error">
-                <p class="dialog-error" id="current-password-error"></p>
-            </div>
-
-            <div class="dialog-field">
-                <label class="dialog-label" for="new-password">Nova senha</label>
-                <input class="dialog-input" type="password" id="new-password" name="newPassword"
-                       autocomplete="new-password" maxlength="72" aria-describedby="new-password-error new-password-hint">
-                <p class="dialog-hint" id="new-password-hint">De 4 a 72 caracteres, diferente da atual.</p>
-                <p class="dialog-error" id="new-password-error"></p>
-            </div>
-
-            <div class="dialog-field">
-                <label class="dialog-label" for="confirm-password">Repita a nova senha</label>
-                <input class="dialog-input" type="password" id="confirm-password" name="confirmPassword"
-                       autocomplete="new-password" maxlength="72" aria-describedby="confirm-password-error">
-                <p class="dialog-error" id="confirm-password-error"></p>
-            </div>
-
-            <label class="dialog-toggle">
-                <input type="checkbox" id="show-passwords">
-                <span>Mostrar senhas</span>
-            </label>
-
-            <p class="dialog-form-error" id="password-form-error" role="alert"></p>
-
-            <div class="dialog-actions">
-                <button type="button" class="dialog-button dialog-button-secondary" id="password-dialog-cancel">Cancelar</button>
-                <button type="submit" class="dialog-button dialog-button-primary" id="password-submit">Salvar nova senha</button>
-            </div>
-
-        </form>
-    </dialog>
 
     <p class="toast" id="app-toast" role="status" hidden></p>
 

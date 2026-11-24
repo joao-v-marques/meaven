@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 // roles: every role reachable through the role hierarchy, used by the front end to show/hide menus
@@ -18,6 +19,9 @@ public record CurrentUserResponse(
 
         @Schema(description = "Data de nascimento; null quando não foi cadastrada", example = "2001-05-20", nullable = true)
         LocalDate birthDate,
+
+        @Schema(description = "Quando a conta foi criada", example = "2026-11-24T19:52:21.858-03:00")
+        OffsetDateTime createdAt,
 
         @Schema(description = "Perfil atribuído ao usuário", example = "ADMINISTRATOR")
         String role,
