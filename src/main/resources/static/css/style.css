@@ -45,69 +45,631 @@ input {
 
 /* ========================================
    MENU LATERAL
+   Brand (wordmark) at the top, navigation in the middle,
+   account (user, password, logout) pinned to the bottom.
 ======================================== */
 
 .sidebar {
-    width: 205px;
-    min-width: 205px;
-    background: var(--branco);
-    border-right: 1px solid #D7C6E8;
-    padding: 25px 15px;
-}
+    --sidebar-ink: #4A3B57;
+    --sidebar-hover: #F5EFFA;
+    --sidebar-active: #EFE6F9;
+    --sidebar-line: #EFE8F4;
+    --erro: #B42318;
+    --erro-fundo: #FFF1F0;
 
-.logo-area {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.logo {
-    width: 65px;
-    height: 65px;
-    margin: auto;
-    background: var(--roxo);
-    color: var(--branco);
-    border-radius: 50%;
+    position: sticky;
+    top: 0;
+    width: 232px;
+    min-width: 232px;
+    height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-weight: bold;
+    flex-direction: column;
+    padding: 30px 16px 18px;
+    background: var(--branco);
+    border-right: 1px solid var(--sidebar-line);
+    overflow-y: auto;
 }
 
-.logo-area p {
-    margin-top: 12px;
-    font-size: 11px;
-    color: var(--texto);
+/* :where() keeps these focus rings from outranking component styles */
+:where(.sidebar, .password-dialog) :where(a, button, input):focus-visible {
+    outline: 2px solid var(--roxo);
+    outline-offset: 2px;
 }
+
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ---------- Marca ---------- */
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 2px 12px 0;
+    border-radius: 10px;
+    color: var(--roxo);
+    text-decoration: none;
+}
+
+.brand-wordmark {
+    display: block;
+    width: 132px;
+    height: auto;
+    overflow: visible;
+}
+
+.brand-letters {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* The "A" is drawn as a peak with no crossbar: the yellow dot is the goal on top */
+.brand-goal {
+    fill: var(--amarelo);
+    transition: transform 0.25s ease;
+}
+
+.brand:hover .brand-goal {
+    transform: translateY(-2px);
+}
+
+.brand-tagline {
+    font-size: 11.5px;
+    color: var(--cinza);
+}
+
+/* ---------- Navegação ---------- */
 
 .menu {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 4px;
+    margin-top: 38px;
 }
 
 .menu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--sidebar-ink);
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.menu-item:hover {
+    background: var(--sidebar-hover);
+    color: var(--roxo);
+}
+
+.menu-item.active {
+    background: var(--sidebar-active);
+    color: var(--roxo);
+    font-weight: bold;
+}
+
+/* Same yellow "goal" dot as the wordmark marks where you are */
+.menu-item.active::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: var(--amarelo);
+}
+
+/* ---------- Conta ---------- */
+
+.account {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--sidebar-line);
+}
+
+.account-user {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 11px;
-    border: 1px solid var(--roxo-borda);
-    border-radius: 25px;
-    text-decoration: none;
-    color: var(--texto);
+    padding: 0 8px 12px;
+}
+
+.account-avatar {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--roxo);
+    color: var(--branco);
     font-size: 13px;
-    transition: 0.2s;
-}
-
-.menu-item span {
-    font-size: 16px;
-}
-
-.menu-item:hover,
-.menu-item.active {
-    background: #E9DDF6;
-    color: var(--roxo);
     font-weight: bold;
+    letter-spacing: 0.03em;
+}
+
+.account-text {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.account-name {
+    overflow: hidden;
+    font-size: 13px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.account-role {
+    font-size: 11.5px;
+    color: var(--cinza);
+}
+
+/* Placeholder while /api/auth/me is loading */
+.account-avatar:empty,
+.account-name:empty,
+.account-role:empty {
+    background: linear-gradient(90deg, #F1EAF7 25%, #F8F4FB 50%, #F1EAF7 75%);
+    background-size: 200% 100%;
+    animation: account-loading 1.2s ease-in-out infinite;
+}
+
+.account-name:empty {
+    width: 110px;
+    height: 12px;
+    border-radius: 6px;
+}
+
+.account-role:empty {
+    width: 70px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+@keyframes account-loading {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+}
+
+.account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.account-action {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--sidebar-ink);
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.account-action .menu-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.account-action:hover {
+    background: var(--sidebar-hover);
+    color: var(--roxo);
+}
+
+.account-action-logout:hover {
+    background: var(--erro-fundo);
+    color: var(--erro);
+}
+
+.account-action:disabled {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+/* ========================================
+   MODAL - ALTERAR SENHA
+======================================== */
+
+.password-dialog {
+    --erro: #B42318;
+
+    width: min(440px, calc(100vw - 32px));
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    background: var(--branco);
+    color: var(--texto);
+    box-shadow: 0 24px 60px #2D1B3B40;
+}
+
+.password-dialog[open] {
+    animation: dialog-in 0.18s ease-out;
+}
+
+.password-dialog::backdrop {
+    background: #2D1B3B73;
+    backdrop-filter: blur(2px);
+}
+
+@keyframes dialog-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+}
+
+.password-form {
+    padding: 28px;
+}
+
+.dialog-header {
+    position: relative;
+    padding-right: 40px;
+    margin-bottom: 6px;
+}
+
+.dialog-title {
+    font-size: 20px;
+    letter-spacing: -0.01em;
+}
+
+.dialog-text {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--cinza);
+}
+
+.dialog-close {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--cinza);
+    cursor: pointer;
+}
+
+.dialog-close:hover {
+    background: #F2EDF5;
+    color: var(--texto);
+}
+
+.dialog-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 18px;
+}
+
+.dialog-label {
+    font-size: 12.5px;
+    font-weight: bold;
+}
+
+.dialog-input {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid #D9CCE6;
+    border-radius: 10px;
+    background: #FFFCFF;
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.dialog-input:hover {
+    border-color: var(--lilas);
+}
+
+.dialog-input:focus {
+    outline: none;
+    border-color: var(--roxo);
+    box-shadow: 0 0 0 3px #643DA826;
+}
+
+.dialog-input[aria-invalid="true"] {
+    border-color: var(--erro);
+}
+
+.dialog-input[aria-invalid="true"]:focus {
+    box-shadow: 0 0 0 3px #B4231826;
+}
+
+.dialog-hint {
+    font-size: 11.5px;
+    color: var(--cinza);
+}
+
+.dialog-error,
+.dialog-form-error {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--erro);
+}
+
+.dialog-error:empty,
+.dialog-form-error:empty {
+    display: none;
+}
+
+.dialog-form-error {
+    margin-top: 16px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #FFF1F0;
+}
+
+.dialog-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--sidebar-ink, #4A3B57);
+    cursor: pointer;
+}
+
+.dialog-toggle input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--roxo);
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.dialog-button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.dialog-button-secondary {
+    background: transparent;
+    color: var(--texto);
+}
+
+.dialog-button-secondary:hover {
+    background: #F2EDF5;
+}
+
+.dialog-button-primary {
+    background: var(--roxo);
+    color: var(--branco);
+}
+
+.dialog-button-primary:hover {
+    background: #4F2E8D;
+}
+
+.dialog-button-primary:disabled {
+    opacity: 0.7;
+    cursor: progress;
+}
+
+/* ========================================
+   AVISO RÁPIDO (TOAST)
+======================================== */
+
+.toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: min(360px, calc(100vw - 48px));
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--texto);
+    color: var(--branco);
+    font-size: 13.5px;
+    box-shadow: 0 10px 30px #2D1B3B33;
+    animation: dialog-in 0.18s ease-out;
+}
+
+.toast[hidden] {
+    display: none;
+}
+
+.toast::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--amarelo);
+}
+
+.toast[data-kind="error"] {
+    background: #B42318;
+}
+
+.toast[data-kind="error"]::before {
+    background: var(--branco);
+}
+
+/* ---------- Menu lateral em telas menores ---------- */
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        width: 204px;
+        min-width: 204px;
+    }
+
+}
+
+/* Phone: the sidebar becomes a top bar (brand + account icons, menu scrolls sideways) */
+@media (max-width: 600px) {
+
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "brand account"
+            "menu menu";
+        align-items: center;
+        row-gap: 14px;
+        padding: 14px;
+        border-right: none;
+        border-bottom: 1px solid var(--sidebar-line);
+        overflow: visible;
+    }
+
+    .brand {
+        grid-area: brand;
+        padding: 0 4px;
+    }
+
+    .brand-wordmark {
+        width: 104px;
+    }
+
+    .brand-tagline {
+        display: none;
+    }
+
+    .menu {
+        grid-area: menu;
+        flex-direction: row;
+        margin-top: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .menu-item {
+        flex-shrink: 0;
+        padding: 8px 12px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .menu-item.active::after {
+        display: none;
+    }
+
+    .account {
+        grid-area: account;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+
+    .account-user {
+        padding: 0;
+    }
+
+    .account-avatar {
+        width: 34px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .account-text {
+        display: none;
+    }
+
+    .account-actions {
+        flex-direction: row;
+    }
+
+    .account-action {
+        width: 38px;
+        height: 38px;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .account-action span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .password-form {
+        padding: 22px;
+    }
+
+    .dialog-actions {
+        flex-direction: column-reverse;
+    }
+
+    .dialog-button {
+        width: 100%;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .brand-goal,
+    .menu-item,
+    .account-action,
+    .dialog-button {
+        transition: none;
+    }
+
+    .password-dialog[open],
+    .toast,
+    .account-avatar:empty,
+    .account-name:empty,
+    .account-role:empty {
+        animation: none;
+    }
+
 }
 
 /* ========================================
@@ -753,11 +1315,6 @@ input {
 
 @media (max-width: 850px) {
 
-    .sidebar {
-        width: 170px;
-        min-width: 170px;
-    }
-
     .main-content {
         padding: 20px;
     }
@@ -785,39 +1342,6 @@ input {
 }
 
 @media (max-width: 600px) {
-
-    .layout {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        min-width: 0;
-        padding: 15px;
-        border-right: none;
-        border-bottom: 1px solid #D7C6E8;
-    }
-
-    .logo-area {
-        margin-bottom: 15px;
-    }
-
-    .logo {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-    }
-
-    .menu {
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 5px;
-    }
-
-    .menu-item {
-        white-space: nowrap;
-        font-size: 11px;
-    }
 
     .main-content {
         padding: 18px 14px;

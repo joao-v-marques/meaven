@@ -22,6 +22,72 @@ const profileAvatar = document.getElementById("profileAvatar");
 
 
 // ========================================
+// USUÁRIO LOGADO
+// Comes from GET /api/auth/me, loaded once by sidebar.js
+// ========================================
+
+const PROFILE_DEFAULTS = {
+    name: "Participante",
+    age: "Idade não informada",
+    capital: "Capital não informado",
+    level: "Nível não informado"
+};
+
+let currentUser = null;
+
+fillCurrentUser();
+
+async function fillCurrentUser() {
+
+    const session = window.MeavenSession;
+
+    currentUser = session ? await session.currentUser : null;
+
+    applyCurrentUser();
+
+}
+
+// Puts the logged-in user's data in the header and in the profile form
+function applyCurrentUser() {
+
+    const name = currentUser ? currentUser.name : PROFILE_DEFAULTS.name;
+    const age = currentUser ? window.MeavenSession.calculateAge(currentUser.birthDate) : null;
+
+    setText(headerName, name);
+    setText(headerAge, age !== null ? age + " anos" : PROFILE_DEFAULTS.age);
+    setAvatars(name);
+
+    // defaultValue makes the form's "Cancelar" (reset) return to these values
+    if (participantName) {
+        participantName.defaultValue = currentUser ? currentUser.name : "";
+    }
+
+    if (participantAge) {
+        participantAge.defaultValue = age !== null ? String(age) : "";
+    }
+
+}
+
+function setText(element, text) {
+
+    if (element) {
+        element.textContent = text;
+    }
+
+}
+
+function setAvatars(name) {
+
+    const session = window.MeavenSession;
+    const initials = session ? session.getInitials(name) : name.charAt(0).toUpperCase();
+
+    setText(headerAvatar, initials);
+    setText(profileAvatar, initials);
+
+}
+
+
+// ========================================
 // SALVAR PERFIL
 // ========================================
 
@@ -118,15 +184,7 @@ if (profileForm) {
         // ATUALIZAR AVATARES
         // ========================================
 
-        const initial = name.charAt(0).toUpperCase();
-
-        if (headerAvatar) {
-            headerAvatar.textContent = initial;
-        }
-
-        if (profileAvatar) {
-            profileAvatar.textContent = initial;
-        }
+        setAvatars(name);
 
         // ========================================
         // CONFIRMAÇÃO
@@ -143,31 +201,12 @@ if (profileForm) {
 
     profileForm.addEventListener("reset", function () {
 
+        // Back to the logged-in user's data (the form fields reset to their defaultValue)
         setTimeout(function () {
 
-            if (headerName) {
-                headerName.textContent = "Novo participante";
-            }
-
-            if (headerAge) {
-                headerAge.textContent = "Complete seu perfil";
-            }
-
-            if (headerCapital) {
-                headerCapital.textContent = "R$ 0,00";
-            }
-
-            if (headerLevel) {
-                headerLevel.textContent = "Não informado";
-            }
-
-            if (headerAvatar) {
-                headerAvatar.textContent = "?";
-            }
-
-            if (profileAvatar) {
-                profileAvatar.textContent = "?";
-            }
+            applyCurrentUser();
+            setText(headerCapital, PROFILE_DEFAULTS.capital);
+            setText(headerLevel, PROFILE_DEFAULTS.level);
 
         }, 0);
 

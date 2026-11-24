@@ -12,6 +12,11 @@ const REDIRECT_NOTICES = {
     "sessao-expirada": "Sua sessão expirou. Entre novamente para continuar.",
 };
 
+// Avisos enviados pelo próprio front-end em /login?aviso=... (ex.: botão "Sair" do menu lateral)
+const INFO_NOTICES = {
+    "saiu": "Você saiu da sua conta.",
+};
+
 const MESSAGES = {
     invalidCredentials: "Usuário ou senha incorretos. Confira os dados e tente novamente.",
     connectionFailed: "Não foi possível falar com o servidor. Verifique sua conexão e tente novamente.",
@@ -73,8 +78,7 @@ async function redirectIfLoggedIn() {
 
 function showRedirectNotice() {
     const params = new URLSearchParams(window.location.search);
-    const reason = params.get("erro");
-    const message = REDIRECT_NOTICES[reason];
+    const message = REDIRECT_NOTICES[params.get("erro")] || INFO_NOTICES[params.get("aviso")];
 
     if (!message) {
         return;
@@ -83,7 +87,7 @@ function showRedirectNotice() {
     notice.textContent = message;
     notice.hidden = false;
 
-    // Tira o ?erro= da barra de endereço para o aviso não voltar ao recarregar
+    // Tira o ?erro= / ?aviso= da barra de endereço para o aviso não voltar ao recarregar
     window.history.replaceState(null, "", window.location.pathname);
 }
 

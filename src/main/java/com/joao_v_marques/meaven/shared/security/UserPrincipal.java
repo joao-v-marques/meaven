@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,6 +25,10 @@ public class UserPrincipal implements UserDetails {
     // Display name and role, used by GET /api/auth/me (role comes from the JOIN FETCH in findByUsername)
     public String getName() {
         return user.getName();
+    }
+
+    public LocalDate getBirthDate() {
+        return user.getBirthDate();
     }
 
     public String getRoleName() {
