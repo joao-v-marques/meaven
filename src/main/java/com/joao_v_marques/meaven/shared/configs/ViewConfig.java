@@ -16,5 +16,12 @@ public class ViewConfig implements WebMvcConfigurer {
         registry.addViewController("/simulations").setViewName("simulacoes");
         registry.addViewController("/concepts").setViewName("conceitos");
         registry.addViewController("/investments").setViewName("investimentos");
+
+        registry.addViewController("/simulations/house").setViewName("comprar-casa");
+        registry.addViewController("/simulations/car").setViewName("comprar-carro");
+        registry.addViewController("/simulations/travel").setViewName("fazer-viagem");
+        registry.addViewController("/simulations/loan").setViewName("emprestimo");
+        registry.addViewController("/simulations/debt").setViewName("quitar-divida");
+        registry.addViewController("/simulations/business").setViewName("abrir-negocio");
     }
 }

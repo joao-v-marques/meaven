@@ -95,7 +95,7 @@ public class AuthController {
     @Operation(
             summary = "Buscar o usuário logado",
             description = """
-                    Devolve o nome, o usuário e o perfil de quem está logado.
+                    Devolve o nome, o usuário, a data de nascimento e o perfil de quem está logado.
                     `roles` lista todos os perfis que o usuário tem pela hierarquia de perfis; o front-end usa essa lista para mostrar ou esconder menus.""")
     @ApiResponse(responseCode = "200", description = "Dados do usuário logado")
     @ApiResponse(responseCode = "401", description = "Não está logado, ou o token é inválido ou expirou",
@@ -110,7 +110,8 @@ public class AuthController {
                 .sorted()
                 .toList();
 
-        return new CurrentUserResponse(principal.getName(), principal.getUsername(), principal.getRoleName(), roles);
+        return new CurrentUserResponse(principal.getName(), principal.getUsername(), principal.getBirthDate(),
+                principal.getRoleName(), roles);
     }
 
     // The logged-in user changes their own password
